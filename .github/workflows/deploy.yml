@@ -1,0 +1,33 @@
+name: Deploy para Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # permite disparar manualmente pela aba Actions
+
+jobs:
+  deploy:
+    name: Enviar arquivos via FTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP para a Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Se a conexão falhar, troque "ftps" por "ftp"
+          protocol: ftps
+          # Pasta de destino no servidor. Se o seu usuário FTP já cair
+          # DENTRO de public_html, troque por "./"
+          server-dir: ./public_html/
+          # Não subir arquivos que não pertencem ao site
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            README.md
+            logo_passou_concursos.png

@@ -1,0 +1,6 @@
+# Artefatos de ferramentas locais
+.playwright-mcp/
+
+# Sistema
+Thumbs.db
+.DS_Store
