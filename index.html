@@ -427,9 +427,11 @@
     footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
     footer a { color: var(--apoio); }
 
-    /* ============ Animações de entrada ============ */
-    .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-up.in { opacity: 1; transform: none; }
+    /* ============ Animações de entrada ============
+       O estado escondido só vale quando o JS está ativo (html.js):
+       sem JS, todo o conteúdo fica visível — nada de página em branco. */
+    .js .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .js .fade-up.in { opacity: 1; transform: none; }
     /* hero anima no load, com escalonamento */
     .hero .fade-up:nth-child(1) { transition-delay: 0.05s; }
     .hero .fade-up:nth-child(2) { transition-delay: 0.15s; }
@@ -445,6 +447,7 @@
 </head>
 
 <body>
+  <script>document.documentElement.classList.add("js");</script>
 
   <header>
     <div class="wrap">
