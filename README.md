@@ -49,7 +49,7 @@ Se a conexão falhar, troque `protocol: ftps` por `ftp`.
 
 ## 3. Antes de publicar
 
-- [ ] Trocar `https://passouconcursos.com.br` pelo domínio real (canonical, OG e JSON-LD no `index.html`)
+- [x] Domínio configurado: `https://beta.passouconcursos.com` (canonical, OG e JSON-LD no `index.html`)
 - [ ] Importar e ativar o workflow no n8n (passo 1)
 - [ ] Testar o formulário no site publicado e conferir a linha na planilha
 - [ ] Restringir o CORS do webhook ao domínio do site

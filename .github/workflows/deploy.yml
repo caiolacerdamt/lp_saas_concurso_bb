@@ -21,9 +21,12 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Se a conexão falhar, troque "ftps" por "ftp"
           protocol: ftps
-          # Pasta de destino no servidor. Se o seu usuário FTP já cair
-          # DENTRO de public_html, troque por "./"
-          server-dir: ./public_html/
+          # Destino no servidor. Este projeto usa uma conta FTP DEDICADA,
+          # apontada direto pra pasta do subdominio beta (ex: public_html/beta).
+          # Por isso o destino e a raiz dessa conta:
+          server-dir: ./
+          # Se voce usar a conta FTP PRINCIPAL (nao dedicada), troque por:
+          #   server-dir: ./public_html/beta/
           # Não subir arquivos que não pertencem ao site
           exclude: |
             **/.git*
