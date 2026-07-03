@@ -1,69 +1,56 @@
 # Passou Concursos — Landing Page (lista de espera)
 
-Landing page estática (HTML + CSS + JS vanilla) para captura de e-mails da lista de espera do beta focado no **Banco do Brasil**. Hospedada na Hostinger, com deploy automático via GitHub Actions.
+Landing page estática (HTML + CSS + JS vanilla) para captura de e-mails da lista de espera do beta focado no **Banco do Brasil**. Hospedada na Hostinger, com deploy automático via GitHub Actions. E-mails salvos em Google Sheets via webhook do n8n.
 
 ## Arquivos
 
 | Arquivo | O que é |
 |---|---|
-| `index.html` | A landing page (CSS e JS inline — arquivo único) |
+| `index.html` | A landing page (CSS e JS inline, arquivo único) |
 | `privacidade.html` | Política de privacidade (LGPD) |
 | `.htaccess` | HTTPS, gzip e cache na Hostinger |
-| `.github/workflows/deploy.yml` | Deploy automático por FTP a cada push na `main` |
+| `.github/workflows/deploy.yml` | Deploy automático por FTP a cada push |
+| `n8n-workflow-lista-espera.json` | Fluxo do n8n: webhook → Google Sheets (importar no n8n) |
 
-## 1. Configurar o destino dos e-mails (Supabase — sem n8n)
+## 1. Destino dos e-mails: n8n → Google Sheets
 
-No painel do Supabase, rode este SQL (**SQL Editor → New query**):
+O formulário já aponta para o webhook de produção:
+`https://webhook.vektoria.cloud/webhook/4eb5e8b9-c013-47ed-aca8-162bd681935d`
 
-```sql
-create table public.waitlist (
-  id uuid primary key default gen_random_uuid(),
-  email text not null unique,
-  source text,
-  created_at timestamptz not null default now()
-);
+Setup no n8n:
 
-alter table public.waitlist enable row level security;
+1. Crie uma planilha no Google Sheets com a primeira linha: `email | origem | data_hora`
+2. No n8n: **Workflows → Import from File** → selecione `n8n-workflow-lista-espera.json`
+3. Abra o nó **Salvar no Google Sheets** → conecte sua credencial Google → selecione a planilha e a aba
+4. **Ative o workflow** (toggle no topo). Sem ativar, a URL de produção responde 404
+5. O nó Webhook já vem com CORS liberado (`Allowed Origins: *`). Depois de publicar, restrinja para o domínio do site
 
--- A anon key só consegue INSERIR. Ninguém lê a lista pelo navegador.
-create policy "anon pode entrar na lista"
-  on public.waitlist for insert
-  to anon
-  with check (true);
-```
+O fluxo usa `appendOrUpdate` casando pela coluna `email`: cadastro repetido atualiza a linha em vez de duplicar.
 
-Depois, em `index.html`, procure `CONFIG` (dentro do `<script>`) e preencha:
+> Alternativa sem n8n: preencher `SUPABASE_URL`/`SUPABASE_ANON_KEY` no `CONFIG` do `index.html` e esvaziar `WEBHOOK_URL` (POST direto numa tabela com RLS insert-only).
 
-```js
-var CONFIG = {
-  SUPABASE_URL: "https://SEU-PROJETO.supabase.co",  // Settings > API > Project URL
-  SUPABASE_ANON_KEY: "eyJ...",                       // Settings > API > anon public
-  WEBHOOK_URL: ""                                     // deixe vazio
-};
-```
+## 2. Deploy automático (GitHub → Hostinger)
 
-> Alternativa: se preferir n8n, preencha só o `WEBHOOK_URL` — ele tem prioridade.
+No repositório: **Settings → Secrets and variables → Actions → New repository secret**. Crie os 3 segredos:
 
-## 2. Configurar o deploy automático (GitHub → Hostinger)
-
-No repositório do GitHub: **Settings → Secrets and variables → Actions → New repository secret**. Crie os 3 segredos:
-
-| Secret | Valor (pegue no hPanel da Hostinger em **Arquivos → Contas FTP**) |
+| Secret | Valor (hPanel da Hostinger em **Arquivos → Contas FTP**) |
 |---|---|
-| `FTP_SERVER` | Host FTP (ex.: `ftp.seudominio.com.br` ou o IP mostrado) |
+| `FTP_SERVER` | Host FTP (ex.: `ftp.seudominio.com.br`) |
 | `FTP_USERNAME` | Usuário FTP |
 | `FTP_PASSWORD` | Senha FTP |
 
-A cada `git push` na branch `main`, o site é publicado sozinho. Também dá pra disparar manualmente em **Actions → Deploy para Hostinger → Run workflow**.
+A cada `git push` na `main`, o site publica sozinho. Disparo manual: **Actions → Deploy para Hostinger → Run workflow**.
 
-⚠️ Se o deploy conectar mas os arquivos caírem no lugar errado, ajuste `server-dir` no workflow:
+⚠️ Se os arquivos caírem no lugar errado, ajuste `server-dir` no workflow:
 - Usuário FTP cai na raiz da conta → `server-dir: ./public_html/` (padrão atual)
 - Usuário FTP já cai dentro de `public_html` → `server-dir: ./`
+
+Se a conexão falhar, troque `protocol: ftps` por `ftp`.
 
 ## 3. Antes de publicar
 
 - [ ] Trocar `https://passouconcursos.com.br` pelo domínio real (canonical, OG e JSON-LD no `index.html`)
-- [ ] Preencher `SUPABASE_URL` e `SUPABASE_ANON_KEY` no `CONFIG`
-- [ ] Subir uma `og-image.png` de 1200x630 na raiz (preview de redes sociais)
-- [ ] Testar o formulário no site publicado
+- [ ] Importar e ativar o workflow no n8n (passo 1)
+- [ ] Testar o formulário no site publicado e conferir a linha na planilha
+- [ ] Restringir o CORS do webhook ao domínio do site
 - [ ] Rodar o PageSpeed: https://pagespeed.web.dev

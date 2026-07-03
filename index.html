@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ============ SEO ============ -->
-  <title>Passou Concursos — Método + IA para o Banco do Brasil</title>
+  <title>Passou Concursos: Método + IA para o Banco do Brasil</title>
   <meta name="description" content="Descubra por que você erra, receba um plano de estudo diário e não esqueça o que estudou. Método + IA focado no concurso do Banco do Brasil. Entre na lista.">
   <!-- TODO: troque SEUDOMINIO pelo domínio real antes de publicar -->
   <link rel="canonical" href="https://passouconcursos.com.br/">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Passou Concursos">
-  <meta property="og:title" content="Passou Concursos — Método + IA para o Banco do Brasil">
+  <meta property="og:title" content="Passou Concursos: Método + IA para o Banco do Brasil">
   <meta property="og:description" content="Pare de estudar no escuro. A Passou descobre por que você erra, monta seu plano diário e usa revisão espaçada pra você não esquecer. Beta com vagas limitadas.">
   <meta property="og:url" content="https://passouconcursos.com.br/">
   <meta property="og:image" content="https://passouconcursos.com.br/og-image.png">
@@ -24,7 +24,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Passou Concursos — Método + IA para o Banco do Brasil">
+  <meta name="twitter:title" content="Passou Concursos: Método + IA para o Banco do Brasil">
   <meta name="twitter:description" content="Descubra por que você erra e receba seu plano de estudo diário. Entre na lista de espera do beta.">
   <meta name="twitter:image" content="https://passouconcursos.com.br/og-image.png">
 
@@ -42,7 +42,7 @@
   }
   </script>
 
-  <!-- ============ CSS crítico (inline — nada bloqueante) ============ -->
+  <!-- ============ CSS crítico (inline, nada bloqueante) ============ -->
   <style>
     :root {
       --base:   #0E3D2F;
@@ -70,7 +70,7 @@
       overflow-x: hidden;
     }
 
-    /* Grão sutil por cima de tudo — textura editorial, custo zero */
+    /* grão sutil por cima de tudo: textura editorial, custo zero */
     body::before {
       content: "";
       position: fixed;
@@ -95,6 +95,13 @@
     }
     .brand { display: flex; align-items: center; gap: 0.65rem; }
     .brand svg { width: 2.4rem; height: 2.4rem; flex-shrink: 0; }
+    /* o check da marca se desenha sozinho no load */
+    .brand svg path {
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: draw 0.8s ease 0.4s forwards;
+    }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
     .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; line-height: 1.1; letter-spacing: -0.01em; }
     .brand-sub { display: block; font-family: var(--font-body); font-weight: 600; font-size: 0.58rem; letter-spacing: 0.42em; color: var(--apoio); text-transform: uppercase; }
 
@@ -107,7 +114,6 @@
       padding: 5.5rem 0 3rem;
       position: relative;
     }
-    /* brilho quente atrás da headline */
     .hero::before {
       content: "";
       position: absolute;
@@ -125,6 +131,13 @@
       max-width: 700px; max-height: 700px;
       background: radial-gradient(circle, rgba(127, 182, 158, 0.10) 0%, transparent 60%);
       pointer-events: none;
+    }
+
+    .hero .wrap { display: grid; gap: 3rem; align-items: center; }
+    .mockup-col { display: none; }
+    @media (min-width: 1000px) {
+      .hero .wrap { grid-template-columns: 1.08fr 0.92fr; }
+      .mockup-col { display: block; }
     }
 
     .badge {
@@ -156,14 +169,14 @@
     h1 {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(2.1rem, 6.2vw, 4rem);
-      line-height: 1.12;
+      font-size: clamp(2.3rem, 7vw, 4.2rem);
+      line-height: 1.1;
       letter-spacing: -0.015em;
-      max-width: 17ch;
+      max-width: 14ch;
       margin-bottom: 1.25rem;
       text-wrap: balance;
     }
-    h1 mark {
+    h1 mark, .final h2 mark {
       background: none;
       color: var(--acento);
       position: relative;
@@ -185,10 +198,79 @@
     .hero p.sub {
       font-size: clamp(1rem, 2.2vw, 1.2rem);
       color: var(--texto-suave);
-      max-width: 54ch;
+      max-width: 50ch;
       margin-bottom: 2rem;
     }
     .hero p.sub strong { color: var(--texto); }
+
+    /* ============ Mockup do app (decorativo, CSS puro) ============ */
+    .mockup {
+      background: linear-gradient(160deg, rgba(10, 49, 37, 0.95), rgba(8, 40, 30, 0.98));
+      border: 1px solid var(--linha);
+      border-radius: 20px;
+      padding: 1.5rem 1.4rem 1.4rem;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(244, 183, 64, 0.06);
+      max-width: 25rem;
+      margin-left: auto;
+      animation: floaty 7s ease-in-out infinite;
+      position: relative;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0) rotate(0.4deg); }
+      50% { transform: translateY(-12px) rotate(-0.4deg); }
+    }
+    .mockup-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
+    .mockup-head strong { font-family: var(--font-display); font-size: 1.15rem; }
+    .mockup-tag {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--base); background: var(--acento);
+      padding: 0.25rem 0.6rem; border-radius: 999px;
+    }
+    .task { display: flex; align-items: center; gap: 0.7rem; padding: 0.65rem 0.75rem; border-radius: 10px; margin-bottom: 0.5rem; background: rgba(14, 61, 47, 0.6); border: 1px solid rgba(127, 182, 158, 0.12); font-size: 0.88rem; }
+    .task svg { width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
+    .task.done { color: rgba(244, 241, 232, 0.55); }
+    .task.done s { text-decoration-color: rgba(244, 183, 64, 0.5); }
+    .task.next { border-color: rgba(244, 183, 64, 0.45); }
+    .task.next .ring {
+      width: 1.05rem; height: 1.05rem; border-radius: 50%;
+      border: 2px solid var(--acento); flex-shrink: 0;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    .meta-row { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--apoio); margin: 1rem 0 0.4rem; }
+    .meter { height: 8px; border-radius: 99px; background: rgba(127, 182, 158, 0.15); overflow: hidden; }
+    .meter i { display: block; height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--acento), #f7c964); transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s; }
+    .js .in .meter i, .no-anim .meter i { width: 68%; }
+    .chip-row { display: flex; gap: 0.5rem; margin-top: 1.1rem; flex-wrap: wrap; }
+    .chip {
+      font-size: 0.72rem; font-weight: 600; color: var(--apoio);
+      border: 1px solid var(--linha); border-radius: 999px; padding: 0.3rem 0.7rem;
+      background: rgba(14, 61, 47, 0.5);
+    }
+    .chip b { color: var(--acento); }
+
+    /* ============ Marquee das matérias ============ */
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--linha);
+      border-bottom: 1px solid var(--linha);
+      padding: 0.85rem 0;
+      background: rgba(10, 49, 37, 0.45);
+      position: relative;
+      z-index: 2;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 2.4rem;
+      white-space: nowrap;
+      animation: rolar 32s linear infinite;
+      will-change: transform;
+    }
+    @keyframes rolar { to { transform: translateX(-50%); } }
+    .marquee span {
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--apoio); display: inline-flex; align-items: center; gap: 2.4rem;
+    }
+    .marquee span::after { content: "✓"; color: var(--acento); font-size: 0.9rem; }
 
     /* ============ Formulário ============ */
     .form-card { max-width: 34rem; }
@@ -229,7 +311,7 @@
     .btn:focus-visible { outline: 3px solid var(--texto); outline-offset: 2px; }
     .btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
 
-    /* honeypot — invisível pra humanos */
+    /* honeypot: invisível pra humanos */
     .hp-field { position: absolute !important; left: -9999px !important; opacity: 0; height: 0; overflow: hidden; }
 
     .microcopy { font-size: 0.85rem; color: var(--apoio); margin-top: 0.8rem; }
@@ -243,7 +325,6 @@
     /* ============ Seções ============ */
     section { padding: 4.5rem 0; position: relative; }
     section.alt { background: var(--painel); }
-    /* divisor diagonal sutil entre base e painel */
     section.alt::before {
       content: "";
       position: absolute;
@@ -271,6 +352,7 @@
       text-wrap: balance;
     }
     .lead { color: var(--texto-suave); max-width: 58ch; margin-bottom: 2.5rem; }
+    .lead em { color: var(--apoio); }
 
     /* ---- Antigo × Passou ---- */
     .versus { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
@@ -280,12 +362,15 @@
       background: rgba(10, 49, 37, 0.5);
       border: 1px dashed rgba(244, 241, 232, 0.2);
       color: var(--texto-suave);
+      transform: rotate(-0.6deg);
     }
     .v-new {
       background: var(--painel);
       border: 1.5px solid var(--acento);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      transform: rotate(0.6deg);
     }
+    @media (max-width: 759px) { .v-old, .v-new { transform: none; } }
     .v-card h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1.1rem; }
     .v-old h3 { color: rgba(244, 241, 232, 0.6); }
     .v-new h3 { color: var(--acento); }
@@ -315,6 +400,22 @@
     .b-card h3 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.5rem; }
     .b-card p { color: var(--texto-suave); font-size: 0.98rem; }
     .b-card p em { color: var(--apoio); font-style: italic; }
+
+    /* gráfico do raio-x da banca (barras que crescem no scroll) */
+    .chart { margin-top: 1.2rem; display: grid; gap: 0.65rem; }
+    .bar { font-size: 0.78rem; color: var(--apoio); }
+    .bar b { display: block; font-weight: 600; color: var(--texto-suave); margin-bottom: 0.25rem; }
+    .bar i {
+      display: block; height: 8px; width: 0; border-radius: 99px;
+      background: linear-gradient(90deg, var(--acento), #f7c964);
+      transition: width 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+    }
+    .bar:nth-child(2) i { transition-delay: 0.4s; }
+    .bar:nth-child(3) i { transition-delay: 0.55s; }
+    .bar:nth-child(4) i { transition-delay: 0.7s; }
+    .bar:nth-child(5) i { transition-delay: 0.85s; }
+    .js .in .bar i, .no-anim .bar i { width: var(--w); }
+    .chart-note { font-size: 0.7rem; color: rgba(244, 241, 232, 0.4); margin-top: 0.6rem; }
 
     /* ---- Como funciona ---- */
     .steps { counter-reset: passo; display: grid; gap: 0; margin-top: 2.5rem; }
@@ -350,10 +451,44 @@
     .ciencia p { color: var(--texto-suave); max-width: 60ch; margin-bottom: 1.1rem; }
     .ciencia p strong { color: var(--texto); }
 
-    /* ---- Prova honesta ---- */
+    /* linha do tempo da revisão espaçada */
+    .fsrs { margin: 2.6rem 0 0.5rem; position: relative; height: 4.6rem; max-width: 40rem; }
+    .fsrs-line {
+      position: absolute; top: 1rem; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--acento), rgba(127, 182, 158, 0.35));
+      border-radius: 2px;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .js .in .fsrs-line, .no-anim .fsrs-line { transform: scaleX(1); }
+    .fsrs-dot {
+      position: absolute; top: 1rem;
+      width: 1rem; height: 1rem;
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 50%;
+      background: var(--acento);
+      border: 3px solid var(--base);
+      box-shadow: 0 0 0 2px var(--acento);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .fsrs-dot small {
+      position: absolute; top: 1.3rem; left: 50%; transform: translateX(-50%);
+      font-size: 0.72rem; font-weight: 600; color: var(--apoio); white-space: nowrap;
+    }
+    .js .in .fsrs-dot, .no-anim .fsrs-dot { transform: translate(-50%, -50%) scale(1); }
+    .fsrs-dot:nth-child(2) { transition-delay: 0.25s; }
+    .fsrs-dot:nth-child(3) { transition-delay: 0.45s; }
+    .fsrs-dot:nth-child(4) { transition-delay: 0.65s; }
+    .fsrs-dot:nth-child(5) { transition-delay: 0.85s; }
+    .fsrs-dot:nth-child(6) { transition-delay: 1.05s; }
+    .fsrs-note { font-size: 0.85rem; color: var(--apoio); }
+
+    /* ---- Beta / fundador ---- */
     .honest { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
     @media (min-width: 760px) { .honest { grid-template-columns: repeat(3, 1fr); } }
     .h-card { border-top: 2px solid var(--acento); padding-top: 1.2rem; }
+    .h-card .h-ico { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
     .h-card h3 { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.45rem; }
     .h-card p { color: var(--texto-suave); font-size: 0.95rem; }
 
@@ -382,10 +517,7 @@
 
     /* ---- FAQ ---- */
     .faq { margin-top: 2rem; }
-    .faq details {
-      border-top: 1px solid var(--linha);
-      padding: 0.2rem 0;
-    }
+    .faq details { border-top: 1px solid var(--linha); padding: 0.2rem 0; }
     .faq details:last-child { border-bottom: 1px solid var(--linha); }
     .faq summary {
       cursor: pointer;
@@ -412,7 +544,7 @@
 
     /* ---- CTA final ---- */
     .final { padding: 5.5rem 0 6rem; text-align: center; }
-    .final h2 { margin-inline: auto; max-width: 20ch; font-size: clamp(1.9rem, 5vw, 3rem); }
+    .final h2 { margin-inline: auto; max-width: 22ch; font-size: clamp(1.9rem, 5vw, 3rem); }
     .final .lead { margin-inline: auto; text-align: center; margin-bottom: 2rem; }
     .final .form-card { margin-inline: auto; }
     .final .waitlist-form { text-align: left; }
@@ -428,11 +560,10 @@
     footer a { color: var(--apoio); }
 
     /* ============ Animações de entrada ============
-       O estado escondido só vale quando o JS está ativo (html.js):
-       sem JS, todo o conteúdo fica visível — nada de página em branco. */
+       O estado escondido só vale com JS ativo (html.js):
+       sem JS, todo o conteúdo fica visível. */
     .js .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .js .fade-up.in { opacity: 1; transform: none; }
-    /* hero anima no load, com escalonamento */
     .hero .fade-up:nth-child(1) { transition-delay: 0.05s; }
     .hero .fade-up:nth-child(2) { transition-delay: 0.15s; }
     .hero .fade-up:nth-child(3) { transition-delay: 0.28s; }
@@ -440,7 +571,11 @@
 
     @media (prefers-reduced-motion: reduce) {
       .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .badge .dot { animation: none; }
+      .badge .dot, .task.next .ring, .mockup, .marquee-track, .brand svg path { animation: none !important; }
+      .brand svg path { stroke-dashoffset: 0; }
+      .meter i, .bar i { transition: none; width: var(--w, 68%); }
+      .fsrs-line { transition: none; transform: scaleX(1); }
+      .fsrs-dot { transition: none; transform: translate(-50%, -50%) scale(1); }
       html { scroll-behavior: auto; }
     }
   </style>
@@ -452,7 +587,6 @@
   <header>
     <div class="wrap">
       <div class="brand">
-        <!-- Símbolo da marca em SVG (mesma arte do logo, sem requisição) -->
         <svg viewBox="0 0 64 64" role="img" aria-label="Logo Passou Concursos">
           <circle cx="32" cy="32" r="30" fill="#F4B740"/>
           <path d="M19 33.5 28 42.5 46 23" stroke="#0E3D2F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -467,34 +601,72 @@
     <!-- ============ 1. HERO ============ -->
     <section class="hero" aria-label="Apresentação">
       <div class="wrap">
-        <p class="badge fade-up"><span class="dot"></span> Pré-lançamento · beta focado no Banco do Brasil</p>
+        <div>
+          <p class="badge fade-up"><span class="dot"></span> Pré-lançamento · beta focado no Banco do Brasil</p>
 
-        <h1 class="fade-up">Você não precisa de mais um PDF. Precisa saber <mark>por que</mark> ainda não passou.</h1>
+          <h1 class="fade-up">Chega de estudar <mark>no escuro</mark>.</h1>
 
-        <p class="sub fade-up">A <strong>Passou</strong> descobre por que você erra, monta seu plano de estudo diário e usa revisão espaçada pra você não esquecer o que já viu — tudo focado no que o <strong>Banco do Brasil</strong> realmente cobra.</p>
+          <p class="sub fade-up">A <strong>Passou</strong> descobre por que você erra, monta seu plano de estudo do dia e agenda cada revisão na hora certa. Você abre, estuda e vê o quanto avançou rumo ao <strong>Banco do Brasil</strong>.</p>
 
-        <div class="form-card fade-up">
-          <form class="waitlist-form" novalidate>
-            <label class="hp-field" aria-hidden="true">Não preencha este campo
-              <input type="text" name="website" tabindex="-1" autocomplete="off">
-            </label>
-            <label for="email-hero" class="hp-field">Seu melhor e-mail</label>
-            <input type="email" id="email-hero" name="email" placeholder="Seu melhor e-mail" required autocomplete="email" inputmode="email">
-            <button type="submit" class="btn">Quero entrar na lista de espera</button>
-          </form>
-          <div class="form-msg" role="status" aria-live="polite"></div>
-          <p class="microcopy">Grátis. Sem cartão. Vagas limitadas no beta do Banco do Brasil.</p>
-          <p class="lgpd">Ao entrar, você concorda em receber e-mails sobre o lançamento. Saia quando quiser. <a href="privacidade.html">Privacidade</a></p>
+          <div class="form-card fade-up">
+            <form class="waitlist-form" novalidate>
+              <label class="hp-field" aria-hidden="true">Não preencha este campo
+                <input type="text" name="website" tabindex="-1" autocomplete="off">
+              </label>
+              <label for="email-hero" class="hp-field">Seu melhor e-mail</label>
+              <input type="email" id="email-hero" name="email" placeholder="Seu melhor e-mail" required autocomplete="email" inputmode="email">
+              <button type="submit" class="btn">Quero entrar na lista de espera</button>
+            </form>
+            <div class="form-msg" role="status" aria-live="polite"></div>
+            <p class="microcopy">Grátis. Sem cartão. Vagas limitadas no beta do Banco do Brasil.</p>
+            <p class="lgpd">Ao entrar, você concorda em receber e-mails sobre o lançamento. Saia quando quiser. <a href="privacidade.html">Privacidade</a></p>
+          </div>
+        </div>
+
+        <!-- Mockup ilustrativo do app (decorativo) -->
+        <div class="mockup-col fade-up in" aria-hidden="true">
+          <div class="mockup">
+            <div class="mockup-head">
+              <strong>Seu plano de hoje</strong>
+              <span class="mockup-tag">automático</span>
+            </div>
+            <div class="task done">
+              <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              <s>Revisão · Conhecimentos Bancários</s>
+            </div>
+            <div class="task done">
+              <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              <s>20 questões · Matemática Financeira</s>
+            </div>
+            <div class="task next">
+              <span class="ring"></span>
+              15 questões · Vendas e Negociação
+            </div>
+            <div class="meta-row"><span>Meta do dia</span><span>68%</span></div>
+            <div class="meter"><i></i></div>
+            <div class="chip-row">
+              <span class="chip">Acerto da semana <b>74%</b></span>
+              <span class="chip"><b>12</b> revisões em dia</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ============ Marquee das matérias do edital ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Língua Portuguesa</span><span>Matemática Financeira</span><span>Conhecimentos Bancários</span><span>Vendas e Negociação</span><span>Informática</span><span>Atualidades do Mercado Financeiro</span><span>Língua Inglesa</span><span>Matemática</span>
+        <span>Língua Portuguesa</span><span>Matemática Financeira</span><span>Conhecimentos Bancários</span><span>Vendas e Negociação</span><span>Informática</span><span>Atualidades do Mercado Financeiro</span><span>Língua Inglesa</span><span>Matemática</span>
+      </div>
+    </div>
+
     <!-- ============ 2. ANTIGO × PASSOU ============ -->
     <section class="alt" aria-label="Comparação">
       <div class="wrap">
-        <p class="kicker fade-up">O problema não é você</p>
-        <h2 class="fade-up">O jeito antigo te deixa no escuro. A Passou acende a luz.</h2>
-        <p class="lead fade-up">Você já estuda o suficiente. O que falta é saber onde está o erro — e o que fazer com ele.</p>
+        <p class="kicker fade-up">Você conhece essa rotina</p>
+        <h2 class="fade-up">Esforço você já tem. O que falta é um mapa.</h2>
+        <p class="lead fade-up">Você estuda horas por dia e mesmo assim fecha o caderno com aquela dúvida: <em>será que estou evoluindo?</em> A comparação abaixo mostra onde essa sensação nasce.</p>
 
         <div class="versus">
           <div class="v-card v-old fade-up">
@@ -509,7 +681,7 @@
           <div class="v-card v-new fade-up">
             <h3>Com a Passou</h3>
             <ul>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Você sabe onde erra e por quê — o erro vira mapa</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Você sabe onde erra, por quê, e o que fazer com isso</li>
               <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Plano diário pronto quando você abre o app</li>
               <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Cada assunto volta pra revisão pouco antes de você esquecer</li>
               <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Foco no que a banca cobra de verdade, pela frequência real</li>
@@ -528,8 +700,8 @@
         <div class="bene">
           <article class="b-card fade-up">
             <span class="b-num">✓ 01</span>
-            <h3>Descobre onde você erra — e por quê</h3>
-            <p>Não é "você errou 6 de 10". É <em>"você erra Matemática Financeira quando o enunciado inverte a taxa"</em>. O erro deixa de ser frustração e vira mapa.</p>
+            <h3>Descobre onde você erra e por quê</h3>
+            <p>O diagnóstico vai além da nota do simulado: ele aponta o padrão por trás do erro, tipo <em>errar Matemática Financeira sempre que o enunciado inverte a taxa</em>. Cada erro te diz exatamente o que corrigir.</p>
           </article>
           <article class="b-card fade-up">
             <span class="b-num">✓ 02</span>
@@ -544,12 +716,20 @@
           <article class="b-card fade-up">
             <span class="b-num">✓ 04</span>
             <h3>Raio-x da banca</h3>
-            <p>Veja, pela frequência real dos assuntos, o que o Banco do Brasil cobra de verdade — e pare de estudar o que quase nunca aparece.</p>
+            <p>Veja, pela frequência real dos assuntos, o que o Banco do Brasil cobra de verdade. Estude na proporção da prova.</p>
+            <div class="chart" role="img" aria-label="Gráfico ilustrativo da frequência de assuntos na prova">
+              <div class="bar"><b>Língua Portuguesa</b><i style="--w:92%"></i></div>
+              <div class="bar"><b>Matemática Financeira</b><i style="--w:74%"></i></div>
+              <div class="bar"><b>Conhecimentos Bancários</b><i style="--w:60%"></i></div>
+              <div class="bar"><b>Vendas e Negociação</b><i style="--w:48%"></i></div>
+              <div class="bar"><b>Informática</b><i style="--w:34%"></i></div>
+            </div>
+            <p class="chart-note">Proporções ilustrativas. O raio-x real usa a frequência das provas anteriores da banca.</p>
           </article>
           <article class="b-card fade-up">
             <span class="b-num">✓ 05</span>
             <h3>Errou? A IA explica na hora</h3>
-            <p>No momento do erro, você entende o raciocínio por trás da resposta. Aprende, não decora.</p>
+            <p>No momento do erro, a IA mostra o raciocínio da resposta certa. O conceito fixa ali, na hora, enquanto a dúvida ainda está fresca.</p>
           </article>
         </div>
       </div>
@@ -565,7 +745,7 @@
           <div class="step fade-up">
             <div>
               <h3>Diagnóstico</h3>
-              <p>Você responde questões e a Passou mapeia onde você erra e por quê — por assunto, por tipo de pegadinha, por padrão de raciocínio.</p>
+              <p>Você responde questões e a Passou mapeia onde você erra e por quê: por assunto, por tipo de pegadinha, por padrão de raciocínio.</p>
             </div>
           </div>
           <div class="step fade-up">
@@ -577,7 +757,7 @@
           <div class="step fade-up">
             <div>
               <h3>Revisão na hora certa</h3>
-              <p>O algoritmo de revisão espaçada agenda cada retorno pouco antes de você esquecer. O conteúdo fixa — sem você administrar nada.</p>
+              <p>O algoritmo de revisão espaçada agenda cada retorno pouco antes de você esquecer. O conteúdo fixa sem você precisar administrar nada.</p>
             </div>
           </div>
         </div>
@@ -588,34 +768,47 @@
     <section class="ciencia" aria-label="Base científica">
       <div class="wrap-narrow">
         <p class="kicker fade-up">Por que funciona</p>
-        <h2 class="fade-up">Não inventamos um método. Copiamos o que a ciência já provou.</h2>
+        <h2 class="fade-up">A ciência já sabe o que faz conteúdo ficar na cabeça. A gente automatizou.</h2>
 
         <blockquote class="fade-up">Praticar com questões e revisar de forma espaçada são as duas técnicas com mais evidência de retenção na literatura de aprendizagem.</blockquote>
 
-        <p class="fade-up">Décadas de pesquisa em psicologia cognitiva apontam o mesmo resultado: <strong>practice testing</strong> (responder questões) e <strong>distributed practice</strong> (revisar em intervalos crescentes) ficam no topo do ranking de eficácia — acima de reler o PDF ou grifar, que é o que quase todo mundo faz.</p>
+        <p class="fade-up">Décadas de pesquisa em psicologia cognitiva apontam o mesmo resultado: <strong>practice testing</strong> (responder questões) e <strong>distributed practice</strong> (revisar em intervalos crescentes) ficam no topo do ranking de eficácia, acima de reler o PDF ou grifar, que é o que quase todo mundo faz.</p>
 
-        <p class="fade-up">A Passou pega essas duas técnicas e <strong>automatiza</strong>: você pratica com questões no padrão da banca, e o algoritmo FSRS — o mesmo tipo de sistema que usuários avançados de Anki conhecem, só que sem configurar nada — decide o que revisar e quando. Você não precisa saber a teoria da aprendizagem. Só precisa abrir e estudar.</p>
+        <p class="fade-up">A Passou automatiza as duas: você pratica com questões no padrão da banca, e o algoritmo FSRS (o mesmo tipo de sistema que usuários avançados de Anki conhecem, só que sem configurar nada) decide o que revisar e quando. Você abre e estuda. A estratégia roda por baixo.</p>
+
+        <div class="fsrs fade-up" aria-label="Linha do tempo ilustrativa dos intervalos de revisão" role="img">
+          <div class="fsrs-line"></div>
+          <span class="fsrs-dot" style="left:2%"><small>hoje</small></span>
+          <span class="fsrs-dot" style="left:12%"><small>1 dia</small></span>
+          <span class="fsrs-dot" style="left:28%"><small>3 dias</small></span>
+          <span class="fsrs-dot" style="left:52%"><small>9 dias</small></span>
+          <span class="fsrs-dot" style="left:96%"><small>24 dias</small></span>
+        </div>
+        <p class="fsrs-note fade-up">Cada revisão chega pouco antes do esquecimento. Quanto mais você acerta, maior o intervalo.</p>
       </div>
     </section>
 
-    <!-- ============ 6. PROVA HONESTA ============ -->
-    <section class="alt" aria-label="Transparência">
+    <!-- ============ 6. ACESSO ANTECIPADO ============ -->
+    <section class="alt" aria-label="Acesso antecipado">
       <div class="wrap">
-        <p class="kicker fade-up">Transparência de pré-lançamento</p>
-        <h2 class="fade-up">Ainda não temos aprovados pra mostrar. Temos algo mais honesto.</h2>
+        <p class="kicker fade-up">Acesso antecipado</p>
+        <h2 class="fade-up">O beta abre com poucas vagas. Quem chega primeiro leva mais.</h2>
 
         <div class="honest">
           <div class="h-card fade-up">
-            <h3>A prova é o método</h3>
-            <p>Prática de questões + revisão espaçada não são achismo: são as técnicas mais bem avaliadas pela ciência da aprendizagem. A Passou só tira o trabalho manual disso.</p>
+            <span class="h-ico" aria-hidden="true">⚡</span>
+            <h3>Entra antes de todo mundo</h3>
+            <p>Você começa a estudar com a plataforma enquanto ela ainda está fechada pro público. Cada semana de vantagem conta.</p>
           </div>
           <div class="h-card fade-up">
-            <h3>Beta limitado</h3>
-            <p>Começamos pelo Banco do Brasil, com vagas limitadas. Quem entra primeiro ajuda a moldar a plataforma — e usa antes de todo mundo.</p>
+            <span class="h-ico" aria-hidden="true">🏷️</span>
+            <h3>Condição de fundador</h3>
+            <p>Quem participa do beta garante condição especial quando a plataforma abrir. Nosso jeito de valorizar quem confiou primeiro.</p>
           </div>
           <div class="h-card fade-up">
-            <h3>Seja um dos primeiros</h3>
-            <p>Quando o beta abrir, a lista de espera tem prioridade. Sem depoimento inventado, sem contador inflado. Só a fila real.</p>
+            <span class="h-ico" aria-hidden="true">🛠️</span>
+            <h3>Molda o produto</h3>
+            <p>Seu feedback vai direto pro time que constrói a Passou. As primeiras turmas definem o rumo da plataforma.</p>
           </div>
         </div>
       </div>
@@ -626,26 +819,26 @@
       <div class="wrap">
         <div class="risco fade-up">
           <p class="kicker">Risco zero</p>
-          <h2>Entrar não custa nada — e sair é um clique.</h2>
-          <p>Grátis. Sem cartão de crédito. A gente só te avisa quando o beta do Banco do Brasil abrir. Não gostou? Você sai da lista quando quiser, no rodapé de qualquer e-mail. Sem letra miúda.</p>
+          <h2>Entrar é grátis. Sair é um clique.</h2>
+          <p>Sem cartão de crédito. A gente só te avisa quando o beta do Banco do Brasil abrir. Se mudar de ideia, o descadastro fica no rodapé de qualquer e-mail. Sem letra miúda.</p>
         </div>
 
         <div class="objecoes">
           <div class="obj fade-up">
             <h3>"É só mais um ChatGPT com outra roupa?"</h3>
-            <p>Não. O ChatGPT não sabe o que a sua banca cobra, não monta seu plano e não lembra o que você já errou. A Passou faz as três coisas.</p>
+            <p>O ChatGPT não conhece a frequência de assuntos da sua banca, não monta seu plano e esquece o que você errou ontem. A Passou nasce pra fazer exatamente essas três coisas.</p>
           </div>
           <div class="obj fade-up">
             <h3>"Vou me cadastrar e abandonar, como as outras."</h3>
-            <p>A Passou existe pra tirar decisão de você. Você não monta cronograma, não escolhe o que revisar. Abre e estuda.</p>
+            <p>A Passou tira as decisões do seu caminho. Cronograma, prioridade e revisão chegam prontos. Sobra a parte que só depende de você: sentar e estudar.</p>
           </div>
           <div class="obj fade-up">
             <h3>"Vou receber spam?"</h3>
-            <p>Um e-mail quando o beta abrir. Talvez uns poucos avisos no caminho. Só. Saiu quando quiser.</p>
+            <p>Um e-mail quando o beta abrir e poucos avisos no caminho. Cansou? O descadastro resolve em um clique.</p>
           </div>
           <div class="obj fade-up">
             <h3>"Não tenho tempo pra aprender ferramenta nova."</h3>
-            <p>O onboarding é responder o que você vai prestar e quanto tempo tem por dia. O resto a Passou monta.</p>
+            <p>O onboarding pede duas respostas: qual concurso e quanto tempo por dia. O resto a Passou monta.</p>
           </div>
         </div>
       </div>
@@ -660,27 +853,27 @@
         <div class="faq fade-up">
           <details>
             <summary>A Passou substitui meu cursinho?</summary>
-            <p>Não precisa. Ela funciona como o cérebro estratégico por cima do que você já estuda: diz o que priorizar, o que revisar e onde você está falhando.</p>
+            <p>Ela trabalha em cima do que você já estuda: aponta prioridade, agenda revisão e mostra onde você está falhando. Funciona sozinha ou junto com o seu cursinho.</p>
           </details>
           <details>
             <summary>Funciona pra qual concurso?</summary>
-            <p>Começamos focados no Banco do Brasil. Entrando na lista, você garante prioridade quando abrirmos — e é avisado quando novos concursos chegarem.</p>
+            <p>O foco inicial é o Banco do Brasil. Entrando na lista, você garante prioridade no beta e fica sabendo quando novos concursos chegarem.</p>
           </details>
           <details>
             <summary>Quando lança?</summary>
-            <p>Estamos em pré-lançamento e abrimos o beta em vagas limitadas. Quem está na lista é avisado primeiro.</p>
+            <p>Estamos em pré-lançamento e o beta abre em vagas limitadas. Quem está na lista é avisado primeiro.</p>
           </details>
           <details>
             <summary>Preciso pagar agora?</summary>
-            <p>Não. Entrar na lista é grátis e sem cartão.</p>
+            <p>Entrar na lista é grátis e sem cartão.</p>
           </details>
           <details>
             <summary>Já tentei outras plataformas e não passei. Por que essa seria diferente?</summary>
-            <p>Porque a maioria te dá mais conteúdo. O seu problema provavelmente não é falta de material — é não saber onde você erra e esquecer o que estudou. É exatamente aí que a Passou atua.</p>
+            <p>Porque a maioria das plataformas só empilha mais conteúdo. Material você já tem de sobra. O que costuma faltar é diagnóstico e revisão na hora certa, e é aí que a Passou trabalha.</p>
           </details>
           <details>
             <summary>O que é essa "revisão espaçada"?</summary>
-            <p>Um sistema que traz cada assunto de volta pra revisão pouco antes de você esquecer. É a forma comprovadamente mais eficiente de fixar conteúdo a longo prazo. A Passou faz isso no automático.</p>
+            <p>Um sistema que agenda cada assunto pra voltar pouco antes de você esquecer. É a técnica com mais evidência científica de retenção de longo prazo, e a Passou roda tudo no automático.</p>
           </details>
         </div>
       </div>
@@ -689,8 +882,8 @@
     <!-- ============ 9. CTA FINAL ============ -->
     <section class="final" aria-label="Entre na lista">
       <div class="wrap">
-        <h2 class="fade-up">Você já estuda o suficiente. Falta estudar com <mark style="background:none;color:var(--acento)">direção</mark>.</h2>
-        <p class="lead fade-up">Entre na lista de espera e seja um dos primeiros a testar o beta do Banco do Brasil.</p>
+        <h2 class="fade-up">O edital não espera. Sua <mark>vaga no beta</mark> também não.</h2>
+        <p class="lead fade-up">Entre na lista de espera e garanta prioridade quando o beta do Banco do Brasil abrir.</p>
 
         <div class="form-card fade-up">
           <form class="waitlist-form" novalidate>
@@ -722,18 +915,15 @@
     "use strict";
 
     /* ================================================================
-       CONFIGURAÇÃO DO DESTINO DOS E-MAILS
-       Opção recomendada (mais simples): Supabase REST direto.
-       1. Crie a tabela `waitlist` (SQL no README.md)
-       2. Cole abaixo a URL do projeto e a anon key (Settings > API)
-       A anon key só consegue INSERIR na tabela (política RLS), nunca ler.
-       ----------------------------------------------------------------
-       Alternativa: preencha WEBHOOK_URL (n8n etc.) e ele terá prioridade.
+       DESTINO DOS E-MAILS: webhook do n8n (fluxo salva no Google Sheets).
+       O JSON do fluxo está em n8n-workflow-lista-espera.json (repo).
+       Alternativa Supabase REST continua disponível: preencha os campos
+       SUPABASE_* e esvazie WEBHOOK_URL.
     ================================================================ */
     var CONFIG = {
-      SUPABASE_URL: "https://SEU-PROJETO.supabase.co",   // TODO
-      SUPABASE_ANON_KEY: "COLE_SUA_ANON_KEY_AQUI",        // TODO
-      WEBHOOK_URL: ""                                      // opcional (n8n)
+      WEBHOOK_URL: "https://webhook.vektoria.cloud/webhook/4eb5e8b9-c013-47ed-aca8-162bd681935d",
+      SUPABASE_URL: "",
+      SUPABASE_ANON_KEY: ""
     };
 
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -789,11 +979,8 @@
           timestamp: new Date().toISOString()
         }).then(function (res) {
           if (res.ok || res.status === 409) {
-            /* 409 = e-mail já cadastrado no Supabase: também é sucesso */
             form.style.display = "none";
-            mostrar("ok", res.status === 409
-              ? "Esse e-mail já está na lista — você não perde sua vaga. 👍"
-              : "Pronto! Você está na lista. Vamos te avisar quando o beta do Banco do Brasil abrir. ✓");
+            mostrar("ok", "Pronto! Você está na lista. Vamos te avisar quando o beta do Banco do Brasil abrir. ✓");
           } else {
             throw new Error("HTTP " + res.status);
           }
@@ -814,6 +1001,7 @@
     var reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var alvos = document.querySelectorAll(".fade-up");
     if (reduz || !("IntersectionObserver" in window)) {
+      document.documentElement.classList.add("no-anim");
       alvos.forEach(function (el) { el.classList.add("in"); });
     } else {
       var io = new IntersectionObserver(function (entries) {

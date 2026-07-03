@@ -31,3 +31,4 @@ jobs:
             **/.github/**
             README.md
             logo_passou_concursos.png
+            n8n-workflow-lista-espera.json
