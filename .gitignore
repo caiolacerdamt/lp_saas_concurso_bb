@@ -1,6 +1,9 @@
 # Artefatos de ferramentas locais
 .playwright-mcp/
 
+# Notas internas (não publicar)
+TROCAR-SUBDOMINIO.md
+
 # Sistema
 Thumbs.db
 .DS_Store

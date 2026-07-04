@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,6 @@
   <!-- ============ SEO ============ -->
   <title>Passou Concursos: Método + IA para o Banco do Brasil</title>
   <meta name="description" content="Descubra por que você erra, receba um plano de estudo diário e não esqueça o que estudou. Método + IA focado no concurso do Banco do Brasil. Entre na lista.">
-  <!-- TODO: troque SEUDOMINIO pelo domínio real antes de publicar -->
   <link rel="canonical" href="https://beta.passouconcursos.com/">
   <meta name="robots" content="index, follow">
 
@@ -28,7 +27,7 @@
   <meta name="twitter:description" content="Descubra por que você erra e receba seu plano de estudo diário. Entre na lista de espera do beta.">
   <meta name="twitter:image" content="https://beta.passouconcursos.com/og-image.png">
 
-  <!-- Favicon: check da marca em SVG inline (zero requisição extra) -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23F4B740'/%3E%3Cpath d='M19 33.5 28 42.5 46 23' stroke='%230E3D2F' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 
   <!-- JSON-LD -->
@@ -42,860 +41,405 @@
   }
   </script>
 
-  <!-- ============ CSS crítico (inline, nada bloqueante) ============ -->
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --base:   #0E3D2F;
-      --painel: #0A3125;
-      --acento: #F4B740;
-      --texto:  #F4F1E8;
-      --apoio:  #7FB69E;
-      --texto-suave: rgba(244, 241, 232, 0.78);
-      --linha: rgba(127, 182, 158, 0.22);
-      --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    :root{
+      --base:#0E3D2F; --painel:#0A3125; --acento:#F4B740; --texto:#F4F1E8;
+      --apoio:#7FB69E; --texto2:#B9D4C7; --creme:#F5F1E8; --linha:rgba(127,182,158,.2);
+      --mono:'IBM Plex Mono',ui-monospace,monospace;
+      --serif:'Instrument Serif',Georgia,serif;
     }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--base);color:var(--texto);font-family:'Schibsted Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+    ::selection{background:var(--acento);color:var(--base)}
+    h1,h2,h3{margin:0}
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+    .eyebrow{font:600 12px var(--mono);letter-spacing:.2em;color:var(--acento);margin:0 0 18px}
+    .accent{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--acento);letter-spacing:-.01em}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Header */
+    .site-header{background:var(--base);border-bottom:1px solid rgba(127,182,158,.16);position:sticky;top:0;z-index:30}
+    .site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 40px}
+    .brand{display:flex;align-items:center;gap:11px}
+    .brand svg{width:32px;height:32px;flex-shrink:0}
+    .brand-name{font-weight:800;font-size:20px;letter-spacing:-.01em;line-height:1}
+    .brand-sub{display:block;font:600 8px/1 var(--mono);letter-spacing:.34em;color:var(--apoio);margin-top:3px}
+    .nav-cta{background:var(--acento);color:var(--base);font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;text-decoration:none;transition:filter .15s}
+    .nav-cta:hover{filter:brightness(1.06)}
 
-    html { scroll-behavior: smooth; }
+    /* Buttons + form */
+    .btn{width:100%;background:var(--acento);color:var(--base);font-family:inherit;font-weight:700;font-size:16px;border:none;border-radius:10px;padding:15px;cursor:pointer;transition:filter .15s,transform .15s}
+    .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+    .btn:disabled{opacity:.6;cursor:wait;transform:none}
+    .form-card{background:var(--painel);border:1px solid rgba(127,182,158,.22);border-radius:16px;padding:16px;max-width:460px}
+    .field-row{display:flex;gap:10px;margin-bottom:10px}
+    input.f{font:inherit;font-size:15px;padding:13px 15px;border:1px solid rgba(127,182,158,.28);border-radius:10px;color:var(--texto);background:rgba(14,61,47,.7);outline:none;transition:border-color .2s;min-width:0}
+    input.f::placeholder{color:rgba(244,241,232,.5)}
+    input.f:focus-visible{border-color:var(--acento)}
+    input.f[aria-invalid="true"]{border-color:#e07856}
+    .f-nome{flex:1}
+    .f-zap{width:140px}
+    .f-mail{width:100%;margin-bottom:10px}
+    .microcopy{font:500 12px var(--mono);color:var(--apoio);margin-top:14px}
+    .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+    .form-msg{margin-top:12px;font-size:14px;border-radius:10px;padding:12px 14px;display:none}
+    .form-msg.ok{display:block;background:rgba(127,182,158,.15);border:1px solid rgba(127,182,158,.4);color:var(--texto)}
+    .form-msg.err{display:block;background:rgba(224,120,86,.12);border:1px solid rgba(224,120,86,.45);color:var(--texto)}
 
-    body {
-      background: var(--base);
-      color: var(--texto);
-      font-family: var(--font-body);
-      font-size: 1.0625rem;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+    /* Hero */
+    .hero{background:var(--base);padding:60px 0 74px}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+    .h1{font-weight:800;font-size:74px;line-height:.98;letter-spacing:-.035em;margin-bottom:22px;max-width:13ch}
+    .h1 .accent{font-size:1.04em}
+    .sub{font-size:19px;line-height:1.5;color:var(--texto2);max-width:44ch;margin:0 0 30px}
+    .proof{display:flex;align-items:center;gap:14px;margin-top:26px}
+    .avatars{display:flex}
+    .avatar{width:34px;height:34px;border-radius:50%;font:700 12px 'Schibsted Grotesk';display:flex;align-items:center;justify-content:center;border:2px solid var(--base)}
+    .avatar:not(:first-child){margin-left:-11px}
+    .proof-txt{font-size:14px;color:var(--texto2)}
+    .sci-card{background:var(--painel);border:1px solid var(--linha);border-radius:20px;padding:26px 26px 22px;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+    .sci-card svg{width:100%;height:auto}
+    .legend{display:flex;gap:22px;margin-top:14px;flex-wrap:wrap}
+    .legend div{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--texto2)}
 
-    /* grão sutil por cima de tudo: textura editorial, custo zero */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.05;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
-    }
+    /* Edital */
+    .edital{background:var(--painel);border-top:1px solid rgba(127,182,158,.16);border-bottom:1px solid rgba(127,182,158,.16);padding:22px 0}
+    .edital .wrap{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+    .edital-label{font:600 11px var(--mono);letter-spacing:.16em;color:var(--acento);white-space:nowrap}
+    .edital-list{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:var(--texto2)}
 
-    ::selection { background: var(--acento); color: var(--base); }
+    /* Sections */
+    section{position:relative}
+    .light{background:var(--creme);color:var(--base)}
+    .light .eyebrow{color:var(--base);opacity:.55}
+    .kicker{font:600 12px var(--mono);letter-spacing:.2em;margin:0 0 16px}
+    .h2{font-weight:800;font-size:44px;line-height:1.02;letter-spacing:-.03em}
+    .pad{padding:88px 0}
 
-    .wrap { width: min(100% - 2.5rem, 68rem); margin-inline: auto; position: relative; z-index: 2; }
-    .wrap-narrow { width: min(100% - 2.5rem, 46rem); margin-inline: auto; position: relative; z-index: 2; }
+    /* O que a Passou faz */
+    .features{display:grid;grid-template-columns:.82fr 1.18fr;gap:60px;align-items:start}
+    .feat-head{position:sticky;top:90px}
+    .feat-head .lead{font-size:17px;line-height:1.5;opacity:.7;max-width:34ch;margin:16px 0 0}
+    .feat-row{display:flex;gap:22px;padding:26px 0;border-top:1px solid rgba(14,61,47,.15)}
+    .feat-row:last-child{border-bottom:1px solid rgba(14,61,47,.15)}
+    .feat-num{font-family:var(--serif);font-style:italic;font-size:34px;line-height:1;min-width:46px}
+    .feat-row h3{font-weight:700;font-size:21px;margin-bottom:6px}
+    .feat-row p{font-size:15.5px;line-height:1.55;opacity:.72;margin:0}
+    .rx{background:var(--base);border-radius:14px;padding:22px 22px 18px;color:var(--texto);max-width:440px;margin-top:18px}
+    .rx-rows{display:flex;flex-direction:column;gap:12px}
+    .rx-lab{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+    .rx-pct{font:600 12px var(--mono);color:var(--acento)}
+    .rx-track{height:7px;border-radius:99px;background:rgba(127,182,158,.18)}
+    .rx-fill{height:100%;border-radius:99px;background:var(--acento)}
+    .rx-note{font:500 10.5px var(--mono);color:var(--apoio);margin-top:16px}
 
-    /* ============ Header ============ */
-    header {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      z-index: 10;
-      padding: 1.25rem 0;
-    }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-    .brand svg { width: 2.4rem; height: 2.4rem; flex-shrink: 0; }
-    /* o check da marca se desenha sozinho no load */
-    .brand svg path {
-      stroke-dasharray: 60;
-      stroke-dashoffset: 60;
-      animation: draw 0.8s ease 0.4s forwards;
-    }
-    @keyframes draw { to { stroke-dashoffset: 0; } }
-    .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; line-height: 1.1; letter-spacing: -0.01em; }
-    .brand-sub { display: block; font-family: var(--font-body); font-weight: 600; font-size: 0.58rem; letter-spacing: 0.42em; color: var(--apoio); text-transform: uppercase; }
+    /* Como funciona */
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
+    .step-num{font-family:var(--serif);font-style:italic;font-size:52px;color:var(--acento);line-height:1;margin-bottom:14px}
+    .step h3{font-weight:700;font-size:22px;margin-bottom:8px}
+    .step p{font-size:15.5px;line-height:1.55;color:var(--texto2);margin:0}
+    .step.bordered{border-left:1px solid var(--linha);padding-left:40px}
 
-    /* ============ Hero ============ */
-    .hero {
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 5.5rem 0 3rem;
-      position: relative;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -20%; right: -30%;
-      width: 80vw; height: 80vw;
-      max-width: 900px; max-height: 900px;
-      background: radial-gradient(circle, rgba(244, 183, 64, 0.13) 0%, transparent 62%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: -30%; left: -25%;
-      width: 70vw; height: 70vw;
-      max-width: 700px; max-height: 700px;
-      background: radial-gradient(circle, rgba(127, 182, 158, 0.10) 0%, transparent 60%);
-      pointer-events: none;
-    }
+    /* Banda manifesto */
+    .band{background:var(--painel)}
+    .band-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:480px}
+    .band-img{min-height:480px;background:var(--base) center/cover no-repeat;border-right:1px solid rgba(127,182,158,.16)}
+    .band-text{padding:64px 56px;display:flex;flex-direction:column;justify-content:center}
+    .band-text blockquote{font-family:var(--serif);font-size:32px;line-height:1.32;letter-spacing:-.01em;margin:0;color:var(--texto)}
+    .band-text p{font-size:15px;line-height:1.55;color:var(--texto2);margin:24px 0 0;max-width:46ch}
 
-    .hero .wrap { display: grid; gap: 3rem; align-items: center; }
-    .mockup-col { display: none; }
-    @media (min-width: 1000px) {
-      .hero .wrap { grid-template-columns: 1.08fr 0.92fr; }
-      .mockup-col { display: block; }
-    }
+    /* Versus */
+    .versus{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .v-card{border-radius:16px;padding:30px 28px}
+    .v-old{background:#fff;border:1px solid rgba(14,61,47,.12)}
+    .v-new{background:var(--base);color:var(--texto);box-shadow:0 20px 50px rgba(14,61,47,.2)}
+    .v-head{font:600 12px var(--mono);letter-spacing:.14em;margin-bottom:18px}
+    .v-old .v-head{color:var(--base);opacity:.6}
+    .v-new .v-head{color:var(--acento)}
+    .v-list{display:flex;flex-direction:column;gap:14px}
+    .v-item{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.45}
+    .v-old .v-item{opacity:.72}
+    .v-new .v-item{color:var(--texto2)}
+    .v-x{color:var(--base);opacity:.4;font-size:18px;line-height:1.4}
+    .v-item svg{flex-shrink:0;margin-top:2px}
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--apoio);
-      border: 1px solid var(--linha);
-      border-radius: 999px;
-      padding: 0.4rem 0.9rem;
-      margin-bottom: 1.5rem;
-      background: rgba(10, 49, 37, 0.6);
-    }
-    .badge .dot {
-      width: 0.5rem; height: 0.5rem;
-      border-radius: 50%;
-      background: var(--acento);
-      animation: pulse 2.2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(244, 183, 64, 0.5); }
-      50% { box-shadow: 0 0 0 6px rgba(244, 183, 64, 0); }
-    }
+    /* Acesso antecipado strip */
+    .early{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:56px;padding-top:44px;border-top:1px solid rgba(14,61,47,.15)}
+    .early-col h3{font-weight:700;font-size:19px;margin:12px 0 6px}
+    .early-col p{font-size:15px;line-height:1.5;opacity:.72;margin:0}
+    .early-rule{width:36px;height:3px;background:var(--acento);border-radius:2px}
 
-    h1 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(2.3rem, 7vw, 4.2rem);
-      line-height: 1.1;
-      letter-spacing: -0.015em;
-      max-width: 14ch;
-      margin-bottom: 1.25rem;
-      text-wrap: balance;
-    }
-    h1 mark, .final h2 mark {
-      background: none;
-      color: var(--acento);
-      position: relative;
-      white-space: nowrap;
-    }
-    /* sublinhado de marca-texto desenhado à mão */
-    h1 mark::after {
-      content: "";
-      position: absolute;
-      left: -1%; right: -1%;
-      bottom: 0.04em;
-      height: 0.16em;
-      background: var(--acento);
-      opacity: 0.35;
-      border-radius: 2px;
-      transform: skewX(-8deg);
-    }
+    /* FAQ */
+    .faq-wrap{max-width:760px;margin:0 auto;padding:0 40px}
+    .faq details{border-top:1px solid var(--linha)}
+    .faq details:last-child{border-bottom:1px solid var(--linha)}
+    .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:600;font-size:17px}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary .ic{color:var(--acento);font-size:24px;font-family:var(--serif);line-height:1;transition:transform .25s}
+    .faq details[open] summary .ic{transform:rotate(45deg)}
+    .faq p{color:var(--texto2);font-size:15.5px;line-height:1.55;padding:0 0 20px;margin:0}
 
-    .hero p.sub {
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
-      color: var(--texto-suave);
-      max-width: 50ch;
-      margin-bottom: 2rem;
-    }
-    .hero p.sub strong { color: var(--texto); }
+    /* CTA final */
+    .cta{background:var(--painel);color:var(--texto);padding:0}
+    .cta-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;align-items:stretch;min-height:520px}
+    .cta-img{background:var(--base) center/cover no-repeat;min-height:520px}
+    .cta-text{padding:72px 56px;display:flex;flex-direction:column;justify-content:center}
+    .cta-text .h2{font-size:48px;line-height:1.0;margin-bottom:16px;max-width:16ch}
+    .cta-text .sub{font-size:17px;margin-bottom:26px}
 
-    /* ============ Mockup do app (decorativo, CSS puro) ============ */
-    .mockup {
-      background: linear-gradient(160deg, rgba(10, 49, 37, 0.95), rgba(8, 40, 30, 0.98));
-      border: 1px solid var(--linha);
-      border-radius: 20px;
-      padding: 1.5rem 1.4rem 1.4rem;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(244, 183, 64, 0.06);
-      max-width: 25rem;
-      margin-left: auto;
-      animation: floaty 7s ease-in-out infinite;
-      position: relative;
-    }
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0) rotate(0.4deg); }
-      50% { transform: translateY(-12px) rotate(-0.4deg); }
-    }
-    .mockup-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
-    .mockup-head strong { font-family: var(--font-display); font-size: 1.15rem; }
-    .mockup-tag {
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--base); background: var(--acento);
-      padding: 0.25rem 0.6rem; border-radius: 999px;
-    }
-    .task { display: flex; align-items: center; gap: 0.7rem; padding: 0.65rem 0.75rem; border-radius: 10px; margin-bottom: 0.5rem; background: rgba(14, 61, 47, 0.6); border: 1px solid rgba(127, 182, 158, 0.12); font-size: 0.88rem; }
-    .task svg { width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
-    .task.done { color: rgba(244, 241, 232, 0.55); }
-    .task.done s { text-decoration-color: rgba(244, 183, 64, 0.5); }
-    .task.next { border-color: rgba(244, 183, 64, 0.45); }
-    .task.next .ring {
-      width: 1.05rem; height: 1.05rem; border-radius: 50%;
-      border: 2px solid var(--acento); flex-shrink: 0;
-      animation: pulse 2.2s ease-in-out infinite;
-    }
-    .meta-row { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--apoio); margin: 1rem 0 0.4rem; }
-    .meter { height: 8px; border-radius: 99px; background: rgba(127, 182, 158, 0.15); overflow: hidden; }
-    .meter i { display: block; height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--acento), #f7c964); transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s; }
-    .js .in .meter i, .no-anim .meter i { width: 68%; }
-    .chip-row { display: flex; gap: 0.5rem; margin-top: 1.1rem; flex-wrap: wrap; }
-    .chip {
-      font-size: 0.72rem; font-weight: 600; color: var(--apoio);
-      border: 1px solid var(--linha); border-radius: 999px; padding: 0.3rem 0.7rem;
-      background: rgba(14, 61, 47, 0.5);
-    }
-    .chip b { color: var(--acento); }
+    /* Footer */
+    footer{background:var(--base);border-top:1px solid rgba(127,182,158,.16);padding:28px 0}
+    footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;font-size:14px;color:var(--apoio)}
+    footer a{text-decoration:none}
 
-    /* ============ Marquee das matérias ============ */
-    .marquee {
-      overflow: hidden;
-      border-top: 1px solid var(--linha);
-      border-bottom: 1px solid var(--linha);
-      padding: 0.85rem 0;
-      background: rgba(10, 49, 37, 0.45);
-      position: relative;
-      z-index: 2;
+    /* ============ Responsivo ============ */
+    @media (max-width:900px){
+      .wrap{padding:0 24px}
+      .site-header .wrap{padding:14px 24px}
+      .hero{padding:44px 0 56px}
+      .hero-grid{grid-template-columns:1fr;gap:40px}
+      .h1{font-size:52px}
+      .cta-text .h2{font-size:36px}
+      .h2{font-size:34px}
+      .features{grid-template-columns:1fr;gap:28px}
+      .feat-head{position:static}
+      .steps-grid{grid-template-columns:1fr;gap:32px}
+      .step.bordered{border-left:none;padding-left:0;border-top:1px solid var(--linha);padding-top:28px}
+      .band-grid{grid-template-columns:1fr}
+      .band-img{min-height:320px}
+      .band-text{padding:44px 24px}
+      .band-text blockquote{font-size:26px}
+      .versus{grid-template-columns:1fr}
+      .early{grid-template-columns:1fr;gap:28px}
+      .cta-grid{grid-template-columns:1fr}
+      .cta-img{min-height:300px;order:-1}
+      .cta-text{padding:48px 24px}
+      .pad{padding:64px 0}
+      .faq-wrap{padding:0 24px}
     }
-    .marquee-track {
-      display: inline-flex;
-      gap: 2.4rem;
-      white-space: nowrap;
-      animation: rolar 32s linear infinite;
-      will-change: transform;
+    @media (max-width:560px){
+      .field-row{flex-direction:column}
+      .f-zap{width:100%}
+      .h1{font-size:42px}
+      .cta-text .h2{font-size:30px}
     }
-    @keyframes rolar { to { transform: translateX(-50%); } }
-    .marquee span {
-      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--apoio); display: inline-flex; align-items: center; gap: 2.4rem;
-    }
-    .marquee span::after { content: "✓"; color: var(--acento); font-size: 0.9rem; }
-
-    /* ============ Formulário ============ */
-    .form-card { max-width: 34rem; }
-    .waitlist-form { display: flex; flex-direction: column; gap: 0.75rem; }
-    @media (min-width: 560px) {
-      .waitlist-form { flex-direction: row; }
-      .waitlist-form input[type="email"] { flex: 1; }
-    }
-    .waitlist-form input[type="email"] {
-      font: inherit;
-      color: var(--texto);
-      background: rgba(10, 49, 37, 0.85);
-      border: 1.5px solid var(--linha);
-      border-radius: 12px;
-      padding: 0.95rem 1.15rem;
-      outline: none;
-      transition: border-color 0.2s;
-      min-width: 0;
-    }
-    .waitlist-form input[type="email"]::placeholder { color: rgba(244, 241, 232, 0.45); }
-    .waitlist-form input[type="email"]:focus-visible { border-color: var(--acento); }
-    .waitlist-form input[type="email"][aria-invalid="true"] { border-color: #e07856; }
-
-    .btn {
-      font: inherit;
-      font-weight: 700;
-      color: var(--base);
-      background: var(--acento);
-      border: none;
-      border-radius: 12px;
-      padding: 0.95rem 1.6rem;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s;
-      box-shadow: 0 4px 18px rgba(244, 183, 64, 0.25);
-    }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(244, 183, 64, 0.35); }
-    .btn:focus-visible { outline: 3px solid var(--texto); outline-offset: 2px; }
-    .btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
-
-    /* honeypot: invisível pra humanos */
-    .hp-field { position: absolute !important; left: -9999px !important; opacity: 0; height: 0; overflow: hidden; }
-
-    .microcopy { font-size: 0.85rem; color: var(--apoio); margin-top: 0.8rem; }
-    .lgpd { font-size: 0.75rem; color: rgba(244, 241, 232, 0.5); margin-top: 0.5rem; }
-    .lgpd a { color: var(--apoio); }
-
-    .form-msg { margin-top: 0.9rem; font-size: 0.95rem; border-radius: 10px; padding: 0.8rem 1rem; display: none; }
-    .form-msg.ok { display: block; background: rgba(127, 182, 158, 0.15); border: 1px solid rgba(127, 182, 158, 0.4); color: var(--texto); }
-    .form-msg.err { display: block; background: rgba(224, 120, 86, 0.12); border: 1px solid rgba(224, 120, 86, 0.45); color: var(--texto); }
-
-    /* ============ Seções ============ */
-    section { padding: 4.5rem 0; position: relative; }
-    section.alt { background: var(--painel); }
-    section.alt::before {
-      content: "";
-      position: absolute;
-      top: -1px; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--linha), transparent);
-    }
-
-    .kicker {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--acento);
-      margin-bottom: 0.9rem;
-    }
-    h2 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(1.6rem, 4.2vw, 2.5rem);
-      line-height: 1.18;
-      letter-spacing: -0.01em;
-      margin-bottom: 1rem;
-      max-width: 24ch;
-      text-wrap: balance;
-    }
-    .lead { color: var(--texto-suave); max-width: 58ch; margin-bottom: 2.5rem; }
-    .lead em { color: var(--apoio); }
-
-    /* ---- Antigo × Passou ---- */
-    .versus { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
-    @media (min-width: 760px) { .versus { grid-template-columns: 1fr 1fr; } }
-    .v-card { border-radius: 16px; padding: 1.8rem 1.6rem; }
-    .v-old {
-      background: rgba(10, 49, 37, 0.5);
-      border: 1px dashed rgba(244, 241, 232, 0.2);
-      color: var(--texto-suave);
-      transform: rotate(-0.6deg);
-    }
-    .v-new {
-      background: var(--painel);
-      border: 1.5px solid var(--acento);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-      transform: rotate(0.6deg);
-    }
-    @media (max-width: 759px) { .v-old, .v-new { transform: none; } }
-    .v-card h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1.1rem; }
-    .v-old h3 { color: rgba(244, 241, 232, 0.6); }
-    .v-new h3 { color: var(--acento); }
-    .v-card ul { list-style: none; display: grid; gap: 0.75rem; }
-    .v-card li { display: flex; gap: 0.7rem; align-items: flex-start; }
-    .v-card li svg { flex-shrink: 0; width: 1.25rem; height: 1.25rem; margin-top: 0.2rem; }
-
-    /* ---- Benefícios ---- */
-    .bene { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
-    @media (min-width: 700px) { .bene { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1000px) { .bene .b-card:first-child { grid-column: span 2; } }
-    .b-card {
-      background: rgba(14, 61, 47, 0.75);
-      border: 1px solid var(--linha);
-      border-radius: 16px;
-      padding: 1.7rem 1.6rem;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .b-card:hover { border-color: rgba(244, 183, 64, 0.5); transform: translateY(-3px); }
-    .b-num {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      color: var(--acento);
-      display: block;
-      margin-bottom: 0.6rem;
-    }
-    .b-card h3 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.5rem; }
-    .b-card p { color: var(--texto-suave); font-size: 0.98rem; }
-    .b-card p em { color: var(--apoio); font-style: italic; }
-
-    /* gráfico do raio-x da banca (barras que crescem no scroll) */
-    .chart { margin-top: 1.2rem; display: grid; gap: 0.65rem; }
-    .bar { font-size: 0.78rem; color: var(--apoio); }
-    .bar b { display: block; font-weight: 600; color: var(--texto-suave); margin-bottom: 0.25rem; }
-    .bar i {
-      display: block; height: 8px; width: 0; border-radius: 99px;
-      background: linear-gradient(90deg, var(--acento), #f7c964);
-      transition: width 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
-    }
-    .bar:nth-child(2) i { transition-delay: 0.4s; }
-    .bar:nth-child(3) i { transition-delay: 0.55s; }
-    .bar:nth-child(4) i { transition-delay: 0.7s; }
-    .bar:nth-child(5) i { transition-delay: 0.85s; }
-    .js .in .bar i, .no-anim .bar i { width: var(--w); }
-    .chart-note { font-size: 0.7rem; color: rgba(244, 241, 232, 0.4); margin-top: 0.6rem; }
-
-    /* ---- Como funciona ---- */
-    .steps { counter-reset: passo; display: grid; gap: 0; margin-top: 2.5rem; }
-    .step {
-      counter-increment: passo;
-      display: grid;
-      grid-template-columns: 3.2rem 1fr;
-      gap: 1.1rem;
-      padding: 1.6rem 0;
-      border-top: 1px solid var(--linha);
-    }
-    .step:last-child { border-bottom: 1px solid var(--linha); }
-    .step::before {
-      content: "0" counter(passo);
-      font-family: var(--font-display);
-      font-size: 1.9rem;
-      color: var(--acento);
-      line-height: 1;
-    }
-    .step h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.35rem; }
-    .step p { color: var(--texto-suave); font-size: 0.98rem; max-width: 52ch; }
-
-    /* ---- Ciência ---- */
-    .ciencia blockquote {
-      font-family: var(--font-display);
-      font-size: clamp(1.15rem, 2.6vw, 1.5rem);
-      line-height: 1.5;
-      border-left: 3px solid var(--acento);
-      padding-left: 1.4rem;
-      margin: 2rem 0;
-      max-width: 44ch;
-    }
-    .ciencia p { color: var(--texto-suave); max-width: 60ch; margin-bottom: 1.1rem; }
-    .ciencia p strong { color: var(--texto); }
-
-    /* linha do tempo da revisão espaçada */
-    .fsrs { margin: 2.6rem 0 0.5rem; position: relative; height: 4.6rem; max-width: 40rem; }
-    .fsrs-line {
-      position: absolute; top: 1rem; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--acento), rgba(127, 182, 158, 0.35));
-      border-radius: 2px;
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .js .in .fsrs-line, .no-anim .fsrs-line { transform: scaleX(1); }
-    .fsrs-dot {
-      position: absolute; top: 1rem;
-      width: 1rem; height: 1rem;
-      transform: translate(-50%, -50%) scale(0);
-      border-radius: 50%;
-      background: var(--acento);
-      border: 3px solid var(--base);
-      box-shadow: 0 0 0 2px var(--acento);
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .fsrs-dot small {
-      position: absolute; top: 1.3rem; left: 50%; transform: translateX(-50%);
-      font-size: 0.72rem; font-weight: 600; color: var(--apoio); white-space: nowrap;
-    }
-    .js .in .fsrs-dot, .no-anim .fsrs-dot { transform: translate(-50%, -50%) scale(1); }
-    .fsrs-dot:nth-child(2) { transition-delay: 0.25s; }
-    .fsrs-dot:nth-child(3) { transition-delay: 0.45s; }
-    .fsrs-dot:nth-child(4) { transition-delay: 0.65s; }
-    .fsrs-dot:nth-child(5) { transition-delay: 0.85s; }
-    .fsrs-dot:nth-child(6) { transition-delay: 1.05s; }
-    .fsrs-note { font-size: 0.85rem; color: var(--apoio); }
-
-    /* ---- Beta / fundador ---- */
-    .honest { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
-    @media (min-width: 760px) { .honest { grid-template-columns: repeat(3, 1fr); } }
-    .h-card { border-top: 2px solid var(--acento); padding-top: 1.2rem; }
-    .h-card .h-ico { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
-    .h-card h3 { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.45rem; }
-    .h-card p { color: var(--texto-suave); font-size: 0.95rem; }
-
-    /* ---- Objeções ---- */
-    .objecoes { display: grid; gap: 1rem; margin-top: 2.2rem; }
-    @media (min-width: 760px) { .objecoes { grid-template-columns: 1fr 1fr; } }
-    .obj {
-      background: rgba(10, 49, 37, 0.6);
-      border: 1px solid var(--linha);
-      border-radius: 14px;
-      padding: 1.4rem 1.4rem;
-    }
-    .obj h3 { font-size: 1rem; color: var(--apoio); font-style: italic; font-weight: 600; margin-bottom: 0.45rem; }
-    .obj p { font-size: 0.95rem; color: var(--texto-suave); }
-
-    /* ---- Risco ---- */
-    .risco {
-      text-align: center;
-      border: 1.5px solid var(--linha);
-      border-radius: 20px;
-      padding: 2.5rem 1.5rem;
-      background: radial-gradient(ellipse at top, rgba(244, 183, 64, 0.07), transparent 65%);
-    }
-    .risco h2 { margin-inline: auto; }
-    .risco p { color: var(--texto-suave); max-width: 52ch; margin-inline: auto; }
-
-    /* ---- FAQ ---- */
-    .faq { margin-top: 2rem; }
-    .faq details { border-top: 1px solid var(--linha); padding: 0.2rem 0; }
-    .faq details:last-child { border-bottom: 1px solid var(--linha); }
-    .faq summary {
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.1rem 0;
-      font-weight: 600;
-      font-size: 1.02rem;
-    }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after {
-      content: "+";
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--acento);
-      transition: transform 0.25s;
-      flex-shrink: 0;
-    }
-    .faq details[open] summary::after { transform: rotate(45deg); }
-    .faq details p { color: var(--texto-suave); padding: 0 0 1.2rem; max-width: 60ch; font-size: 0.98rem; }
-
-    /* ---- CTA final ---- */
-    .final { padding: 5.5rem 0 6rem; text-align: center; }
-    .final h2 { margin-inline: auto; max-width: 22ch; font-size: clamp(1.9rem, 5vw, 3rem); }
-    .final .lead { margin-inline: auto; text-align: center; margin-bottom: 2rem; }
-    .final .form-card { margin-inline: auto; }
-    .final .waitlist-form { text-align: left; }
-
-    /* ---- Footer ---- */
-    footer {
-      border-top: 1px solid var(--linha);
-      padding: 2rem 0 2.5rem;
-      font-size: 0.85rem;
-      color: rgba(244, 241, 232, 0.55);
-    }
-    footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
-    footer a { color: var(--apoio); }
-
-    /* ============ Animações de entrada ============
-       O estado escondido só vale com JS ativo (html.js):
-       sem JS, todo o conteúdo fica visível. */
-    .js .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .js .fade-up.in { opacity: 1; transform: none; }
-    .hero .fade-up:nth-child(1) { transition-delay: 0.05s; }
-    .hero .fade-up:nth-child(2) { transition-delay: 0.15s; }
-    .hero .fade-up:nth-child(3) { transition-delay: 0.28s; }
-    .hero .fade-up:nth-child(4) { transition-delay: 0.4s; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .badge .dot, .task.next .ring, .mockup, .marquee-track, .brand svg path { animation: none !important; }
-      .brand svg path { stroke-dashoffset: 0; }
-      .meter i, .bar i { transition: none; width: var(--w, 68%); }
-      .fsrs-line { transition: none; transform: scaleX(1); }
-      .fsrs-dot { transition: none; transform: translate(-50%, -50%) scale(1); }
-      html { scroll-behavior: auto; }
-    }
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 
 <body>
-  <script>document.documentElement.classList.add("js");</script>
 
-  <header>
+  <header class="site-header">
     <div class="wrap">
-      <div class="brand">
-        <svg viewBox="0 0 64 64" role="img" aria-label="Logo Passou Concursos">
-          <circle cx="32" cy="32" r="30" fill="#F4B740"/>
-          <path d="M19 33.5 28 42.5 46 23" stroke="#0E3D2F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-        <span class="brand-name">Passou<span class="brand-sub">Concursos</span></span>
-      </div>
+      <a href="#" class="brand" aria-label="Passou Concursos" style="text-decoration:none">
+        <svg viewBox="0 0 64 64" role="img" aria-label="Logo Passou Concursos"><circle cx="32" cy="32" r="30" fill="#F4B740"></circle><path d="M19 33.5 28 42.5 46 23" fill="none" stroke="#0E3D2F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span><span class="brand-name">Passou</span><span class="brand-sub">CONCURSOS</span></span>
+      </a>
+      <a href="#entrar" class="nav-cta">Entrar na lista</a>
     </div>
   </header>
 
   <main>
 
-    <!-- ============ 1. HERO ============ -->
+    <!-- ============ HERO ============ -->
     <section class="hero" aria-label="Apresentação">
-      <div class="wrap">
+      <div class="wrap hero-grid">
         <div>
-          <p class="badge fade-up"><span class="dot"></span> Pré-lançamento · beta focado no Banco do Brasil</p>
+          <p class="eyebrow">PRÉ-LANÇAMENTO · CONCURSO BANCO DO BRASIL</p>
+          <h1 class="h1">Chega de estudar <span class="accent">no escuro</span>.</h1>
+          <p class="sub">A Passou descobre por que você erra, monta seu plano de estudo do dia e agenda cada revisão na hora certa. Você abre, estuda e vê o quanto avançou rumo ao Banco do Brasil.</p>
 
-          <h1 class="fade-up">Chega de estudar <mark>no escuro</mark>.</h1>
-
-          <p class="sub fade-up">A <strong>Passou</strong> descobre por que você erra, monta seu plano de estudo do dia e agenda cada revisão na hora certa. Você abre, estuda e vê o quanto avançou rumo ao <strong>Banco do Brasil</strong>.</p>
-
-          <div class="form-card fade-up">
+          <div id="entrar" class="form-card">
             <form class="waitlist-form" novalidate>
-              <label class="hp-field" aria-hidden="true">Não preencha este campo
-                <input type="text" name="website" tabindex="-1" autocomplete="off">
-              </label>
-              <label for="email-hero" class="hp-field">Seu melhor e-mail</label>
-              <input type="email" id="email-hero" name="email" placeholder="Seu melhor e-mail" required autocomplete="email" inputmode="email">
-              <button type="submit" class="btn">Quero entrar na lista de espera</button>
+              <label class="hp" aria-hidden="true">Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+              <div class="field-row">
+                <input class="f f-nome" type="text" name="nome" placeholder="Seu nome" autocomplete="name" required>
+                <input class="f f-zap" type="tel" name="whatsapp" placeholder="WhatsApp" autocomplete="tel" inputmode="tel">
+              </div>
+              <input class="f f-mail" type="email" name="email" placeholder="Seu melhor e-mail" autocomplete="email" inputmode="email" required>
+              <button type="submit" class="btn">Quero minha vaga no beta →</button>
             </form>
             <div class="form-msg" role="status" aria-live="polite"></div>
-            <p class="microcopy">Grátis. Sem cartão. Vagas limitadas no beta do Banco do Brasil.</p>
-            <p class="lgpd">Ao entrar, você concorda em receber e-mails sobre o lançamento. Saia quando quiser. <a href="privacidade.html">Privacidade</a></p>
+            <p class="microcopy">Grátis · sem cartão · vagas limitadas</p>
+          </div>
+
+          <div class="proof">
+            <div class="avatars" aria-hidden="true">
+              <span class="avatar" style="background:#F4B740;color:#0E3D2F">JV</span>
+              <span class="avatar" style="background:#7FB69E;color:#0E3D2F">AM</span>
+              <span class="avatar" style="background:#F4F1E8;color:#0E3D2F">RS</span>
+              <span class="avatar" style="background:#0A3125;color:#7FB69E">+</span>
+            </div>
+            <div class="proof-txt">Concurseiros de todo o Brasil já estão entrando na lista de espera</div>
           </div>
         </div>
 
-        <!-- Mockup ilustrativo do app (decorativo) -->
-        <div class="mockup-col fade-up in" aria-hidden="true">
-          <div class="mockup">
-            <div class="mockup-head">
-              <strong>Seu plano de hoje</strong>
-              <span class="mockup-tag">automático</span>
-            </div>
-            <div class="task done">
-              <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              <s>Revisão · Conhecimentos Bancários</s>
-            </div>
-            <div class="task done">
-              <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              <s>20 questões · Matemática Financeira</s>
-            </div>
-            <div class="task next">
-              <span class="ring"></span>
-              15 questões · Vendas e Negociação
-            </div>
-            <div class="meta-row"><span>Meta do dia</span><span>68%</span></div>
-            <div class="meter"><i></i></div>
-            <div class="chip-row">
-              <span class="chip">Acerto da semana <b>74%</b></span>
-              <span class="chip"><b>12</b> revisões em dia</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Marquee das matérias do edital ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Língua Portuguesa</span><span>Matemática Financeira</span><span>Conhecimentos Bancários</span><span>Vendas e Negociação</span><span>Informática</span><span>Atualidades do Mercado Financeiro</span><span>Língua Inglesa</span><span>Matemática</span>
-        <span>Língua Portuguesa</span><span>Matemática Financeira</span><span>Conhecimentos Bancários</span><span>Vendas e Negociação</span><span>Informática</span><span>Atualidades do Mercado Financeiro</span><span>Língua Inglesa</span><span>Matemática</span>
-      </div>
-    </div>
-
-    <!-- ============ 2. ANTIGO × PASSOU ============ -->
-    <section class="alt" aria-label="Comparação">
-      <div class="wrap">
-        <p class="kicker fade-up">Você conhece essa rotina</p>
-        <h2 class="fade-up">Esforço você já tem. O que falta é um mapa.</h2>
-        <p class="lead fade-up">Você estuda horas por dia e mesmo assim fecha o caderno com aquela dúvida: <em>será que estou evoluindo?</em> A comparação abaixo mostra onde essa sensação nasce.</p>
-
-        <div class="versus">
-          <div class="v-card v-old fade-up">
-            <h3>O jeito antigo</h3>
-            <ul>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="rgba(244,241,232,0.4)" stroke-width="2.2" stroke-linecap="round"/></svg> Acumular PDF e videoaula sem saber se está evoluindo</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="rgba(244,241,232,0.4)" stroke-width="2.2" stroke-linecap="round"/></svg> Montar cronograma no domingo e abandonar na quarta</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="rgba(244,241,232,0.4)" stroke-width="2.2" stroke-linecap="round"/></svg> Rever o simulado de duas semanas atrás e não lembrar de nada</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="rgba(244,241,232,0.4)" stroke-width="2.2" stroke-linecap="round"/></svg> Gastar 3 horas num assunto que quase não cai na prova</li>
-            </ul>
-          </div>
-          <div class="v-card v-new fade-up">
-            <h3>Com a Passou</h3>
-            <ul>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Você sabe onde erra, por quê, e o que fazer com isso</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Plano diário pronto quando você abre o app</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Cada assunto volta pra revisão pouco antes de você esquecer</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#F4B740"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Foco no que a banca cobra de verdade, pela frequência real</li>
-            </ul>
+        <div class="sci-card" aria-label="Curva de retenção com e sem revisão espaçada">
+          <div style="font:600 11px var(--mono);letter-spacing:.18em;color:var(--acento);margin-bottom:7px">CIÊNCIA DA APRENDIZAGEM</div>
+          <div style="font-weight:700;font-size:20px;line-height:1.2;margin-bottom:6px;max-width:22ch">Por que você esquece — e como a Passou resolve</div>
+          <p style="font-size:13px;line-height:1.5;color:var(--apoio);margin:0 0 16px;max-width:38ch">Sem revisão, a retenção despenca em dias. A Passou reapresenta cada assunto pouco antes do esquecimento.</p>
+          <svg viewBox="0 0 520 290" role="img" aria-label="Gráfico ilustrativo">
+            <line x1="46" y1="248" x2="500" y2="248" stroke="#7FB69E" stroke-opacity=".35" stroke-width="1.5"></line>
+            <line x1="46" y1="30" x2="46" y2="248" stroke="#7FB69E" stroke-opacity=".35" stroke-width="1.5"></line>
+            <path d="M46,52 C130,148 240,210 500,236" fill="none" stroke="#7FB69E" stroke-width="2.5" stroke-dasharray="5 5"></path>
+            <path d="M46,52 C82,88 112,100 152,100 L152,50 C190,80 220,90 262,90 L262,46 C300,72 330,80 372,80 L372,44 C406,64 440,70 500,70" fill="none" stroke="#F4B740" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></path>
+            <circle cx="46" cy="52" r="4.5" fill="#F4B740"></circle>
+            <circle cx="152" cy="50" r="4.5" fill="#F4B740"></circle>
+            <circle cx="262" cy="46" r="4.5" fill="#F4B740"></circle>
+            <circle cx="372" cy="44" r="4.5" fill="#F4B740"></circle>
+            <text x="46" y="268" fill="#7FB69E" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">hoje</text>
+            <text x="152" y="268" fill="#7FB69E" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">1 sem</text>
+            <text x="262" y="268" fill="#7FB69E" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">2 sem</text>
+            <text x="372" y="268" fill="#7FB69E" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">1 mês</text>
+          </svg>
+          <div class="legend">
+            <div><span style="width:20px;height:3px;background:#7FB69E;display:inline-block;border-radius:2px"></span>Sem revisão</div>
+            <div><span style="width:20px;height:4px;background:#F4B740;display:inline-block;border-radius:2px"></span>Com revisão espaçada (FSRS)</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 3. BENEFÍCIOS ============ -->
-    <section aria-label="Benefícios">
+    <!-- ============ EDITAL ============ -->
+    <section class="edital" aria-label="Matérias do edital">
       <div class="wrap">
-        <p class="kicker fade-up">O que a Passou faz por você</p>
-        <h2 class="fade-up">Menos decisão. Mais direção.</h2>
+        <span class="edital-label">NO EDITAL</span>
+        <div class="edital-list">
+          <span>Língua Portuguesa</span><span>Matemática Financeira</span><span>Conhecimentos Bancários</span><span>Vendas e Negociação</span><span>Informática</span><span>Atualidades do Mercado</span><span>Língua Inglesa</span>
+        </div>
+      </div>
+    </section>
 
-        <div class="bene">
-          <article class="b-card fade-up">
-            <span class="b-num">✓ 01</span>
-            <h3>Descobre onde você erra e por quê</h3>
-            <p>O diagnóstico vai além da nota do simulado: ele aponta o padrão por trás do erro, tipo <em>errar Matemática Financeira sempre que o enunciado inverte a taxa</em>. Cada erro te diz exatamente o que corrigir.</p>
-          </article>
-          <article class="b-card fade-up">
-            <span class="b-num">✓ 02</span>
-            <h3>Seu plano de estudo, montado sozinho, todo dia</h3>
-            <p>Você abre e já sabe o que fazer. A Passou prioriza o que mais cai na banca e o que você mais erra. Zero tempo perdido decidindo.</p>
-          </article>
-          <article class="b-card fade-up">
-            <span class="b-num">✓ 03</span>
-            <h3>Você para de esquecer o que estudou</h3>
-            <p>Revisão espaçada (algoritmo FSRS) traz cada assunto de volta na hora certa, pouco antes de você esquecer. Adeus revisar tudo na véspera.</p>
-          </article>
-          <article class="b-card fade-up">
-            <span class="b-num">✓ 04</span>
+    <!-- ============ O QUE A PASSOU FAZ ============ -->
+    <section class="light pad" aria-label="O que a Passou faz">
+      <div class="wrap features">
+        <div class="feat-head">
+          <p class="eyebrow">O QUE A PASSOU FAZ</p>
+          <h2 class="h2">Menos decisão. <span class="accent">Mais direção.</span></h2>
+          <p class="lead">Você já tem esforço e material de sobra. O que falta é saber onde falha e o que fazer amanhã de manhã.</p>
+        </div>
+        <div>
+          <div class="feat-row"><span class="feat-num">01</span><div><h3>Descobre onde você erra e por quê</h3><p>Vai além da nota do simulado: aponta o padrão por trás do erro — tipo errar Matemática Financeira sempre que o enunciado inverte a taxa. Cada erro vira um plano de correção.</p></div></div>
+          <div class="feat-row"><span class="feat-num">02</span><div><h3>Seu plano de estudo, montado sozinho, todo dia</h3><p>Você abre e já sabe o que fazer. A Passou cruza o que mais cai na banca com o que você mais erra. Zero tempo perdido decidindo.</p></div></div>
+          <div class="feat-row"><span class="feat-num">03</span><div><h3>Você para de esquecer o que estudou</h3><p>Revisão espaçada (algoritmo FSRS) traz cada assunto de volta pouco antes de você esquecer. Adeus revisar tudo na véspera.</p></div></div>
+          <div class="feat-row"><span class="feat-num">04</span><div style="flex:1">
             <h3>Raio-x da banca</h3>
             <p>Veja, pela frequência real dos assuntos, o que o Banco do Brasil cobra de verdade. Estude na proporção da prova.</p>
-            <div class="chart" role="img" aria-label="Gráfico ilustrativo da frequência de assuntos na prova">
-              <div class="bar"><b>Língua Portuguesa</b><i style="--w:92%"></i></div>
-              <div class="bar"><b>Matemática Financeira</b><i style="--w:74%"></i></div>
-              <div class="bar"><b>Conhecimentos Bancários</b><i style="--w:60%"></i></div>
-              <div class="bar"><b>Vendas e Negociação</b><i style="--w:48%"></i></div>
-              <div class="bar"><b>Informática</b><i style="--w:34%"></i></div>
+            <div class="rx">
+              <div class="rx-rows">
+                <div><div class="rx-lab"><span>Língua Portuguesa</span><span class="rx-pct">92%</span></div><div class="rx-track"><div class="rx-fill" style="width:92%"></div></div></div>
+                <div><div class="rx-lab"><span>Matemática Financeira</span><span class="rx-pct">74%</span></div><div class="rx-track"><div class="rx-fill" style="width:74%"></div></div></div>
+                <div><div class="rx-lab"><span>Conhecimentos Bancários</span><span class="rx-pct">60%</span></div><div class="rx-track"><div class="rx-fill" style="width:60%"></div></div></div>
+                <div><div class="rx-lab"><span>Vendas e Negociação</span><span class="rx-pct">48%</span></div><div class="rx-track"><div class="rx-fill" style="width:48%"></div></div></div>
+              </div>
+              <div class="rx-note">Proporções ilustrativas · o raio-x real usa a frequência das provas anteriores.</div>
             </div>
-            <p class="chart-note">Proporções ilustrativas. O raio-x real usa a frequência das provas anteriores da banca.</p>
-          </article>
-          <article class="b-card fade-up">
-            <span class="b-num">✓ 05</span>
-            <h3>Errou? A IA explica na hora</h3>
-            <p>No momento do erro, a IA mostra o raciocínio da resposta certa. O conceito fixa ali, na hora, enquanto a dúvida ainda está fresca.</p>
-          </article>
+          </div></div>
+          <div class="feat-row"><span class="feat-num">05</span><div><h3>Errou? A IA explica na hora</h3><p>No momento do erro, a IA mostra o raciocínio da resposta certa. O conceito fixa ali, enquanto a dúvida ainda está fresca.</p></div></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 4. COMO FUNCIONA ============ -->
-    <section class="alt" aria-label="Como funciona">
-      <div class="wrap-narrow">
-        <p class="kicker fade-up">Como funciona</p>
-        <h2 class="fade-up">Três passos. Nenhuma planilha.</h2>
-
-        <div class="steps">
-          <div class="step fade-up">
-            <div>
-              <h3>Diagnóstico</h3>
-              <p>Você responde questões e a Passou mapeia onde você erra e por quê: por assunto, por tipo de pegadinha, por padrão de raciocínio.</p>
-            </div>
-          </div>
-          <div class="step fade-up">
-            <div>
-              <h3>Plano diário automático</h3>
-              <p>Todo dia, a plataforma cruza o que mais cai na prova com o que você mais erra e te entrega a lista do dia. Abre e estuda.</p>
-            </div>
-          </div>
-          <div class="step fade-up">
-            <div>
-              <h3>Revisão na hora certa</h3>
-              <p>O algoritmo de revisão espaçada agenda cada retorno pouco antes de você esquecer. O conteúdo fixa sem você precisar administrar nada.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 5. CIÊNCIA / AUTORIDADE ============ -->
-    <section class="ciencia" aria-label="Base científica">
-      <div class="wrap-narrow">
-        <p class="kicker fade-up">Por que funciona</p>
-        <h2 class="fade-up">A ciência já sabe o que faz conteúdo ficar na cabeça. A gente automatizou.</h2>
-
-        <blockquote class="fade-up">Praticar com questões e revisar de forma espaçada são as duas técnicas com mais evidência de retenção na literatura de aprendizagem.</blockquote>
-
-        <p class="fade-up">Décadas de pesquisa em psicologia cognitiva apontam o mesmo resultado: <strong>practice testing</strong> (responder questões) e <strong>distributed practice</strong> (revisar em intervalos crescentes) ficam no topo do ranking de eficácia, acima de reler o PDF ou grifar, que é o que quase todo mundo faz.</p>
-
-        <p class="fade-up">A Passou automatiza as duas: você pratica com questões no padrão da banca, e o algoritmo FSRS (o mesmo tipo de sistema que usuários avançados de Anki conhecem, só que sem configurar nada) decide o que revisar e quando. Você abre e estuda. A estratégia roda por baixo.</p>
-
-        <div class="fsrs fade-up" aria-label="Linha do tempo ilustrativa dos intervalos de revisão" role="img">
-          <div class="fsrs-line"></div>
-          <span class="fsrs-dot" style="left:2%"><small>hoje</small></span>
-          <span class="fsrs-dot" style="left:12%"><small>1 dia</small></span>
-          <span class="fsrs-dot" style="left:28%"><small>3 dias</small></span>
-          <span class="fsrs-dot" style="left:52%"><small>9 dias</small></span>
-          <span class="fsrs-dot" style="left:96%"><small>24 dias</small></span>
-        </div>
-        <p class="fsrs-note fade-up">Cada revisão chega pouco antes do esquecimento. Quanto mais você acerta, maior o intervalo.</p>
-      </div>
-    </section>
-
-    <!-- ============ 6. ACESSO ANTECIPADO ============ -->
-    <section class="alt" aria-label="Acesso antecipado">
+    <!-- ============ COMO FUNCIONA ============ -->
+    <section class="pad" aria-label="Como funciona">
       <div class="wrap">
-        <p class="kicker fade-up">Acesso antecipado</p>
-        <h2 class="fade-up">O beta abre com poucas vagas. Quem chega primeiro leva mais.</h2>
-
-        <div class="honest">
-          <div class="h-card fade-up">
-            <span class="h-ico" aria-hidden="true">⚡</span>
-            <h3>Entra antes de todo mundo</h3>
-            <p>Você começa a estudar com a plataforma enquanto ela ainda está fechada pro público. Cada semana de vantagem conta.</p>
-          </div>
-          <div class="h-card fade-up">
-            <span class="h-ico" aria-hidden="true">🏷️</span>
-            <h3>Condição de fundador</h3>
-            <p>Quem participa do beta garante condição especial quando a plataforma abrir. Nosso jeito de valorizar quem confiou primeiro.</p>
-          </div>
-          <div class="h-card fade-up">
-            <span class="h-ico" aria-hidden="true">🛠️</span>
-            <h3>Molda o produto</h3>
-            <p>Seu feedback vai direto pro time que constrói a Passou. As primeiras turmas definem o rumo da plataforma.</p>
-          </div>
+        <p class="eyebrow">COMO FUNCIONA</p>
+        <h2 class="h2" style="max-width:16ch">Três passos. <span class="accent">Nenhuma planilha.</span></h2>
+        <div class="steps-grid">
+          <div class="step"><div class="step-num">01</div><h3>Diagnóstico</h3><p>Você responde questões e a Passou mapeia onde erra e por quê: por assunto, por tipo de pegadinha, por padrão de raciocínio.</p></div>
+          <div class="step bordered"><div class="step-num">02</div><h3>Plano diário automático</h3><p>Todo dia a plataforma cruza o que mais cai na prova com o que você mais erra e entrega a lista do dia. Abre e estuda.</p></div>
+          <div class="step bordered"><div class="step-num">03</div><h3>Revisão na hora certa</h3><p>O algoritmo agenda cada retorno pouco antes de você esquecer. O conteúdo fixa sem você administrar nada.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 7. RISCO ZERO + OBJEÇÕES ============ -->
-    <section aria-label="Sem risco">
+    <!-- ============ BANDA MANIFESTO ============ -->
+    <section class="band" aria-label="O método">
+      <div class="band-grid">
+        <div class="band-img" style="background-image:url('img-estudante.png')" role="img" aria-label="Estudante à mesa, à luz do abajur"></div>
+        <div class="band-text">
+          <p class="eyebrow">O MÉTODO</p>
+          <blockquote>"Praticar com questões e revisar de forma espaçada são as duas técnicas com <span class="accent" style="font-size:1em">mais evidência de retenção</span> na literatura de aprendizagem."</blockquote>
+          <p>A Passou automatiza as duas: você pratica no padrão da banca e o algoritmo FSRS decide o que revisar e quando. Você abre e estuda — a estratégia roda por baixo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ANTIGO x PASSOU + ACESSO ANTECIPADO ============ -->
+    <section class="light pad" aria-label="Comparação e acesso antecipado">
       <div class="wrap">
-        <div class="risco fade-up">
-          <p class="kicker">Risco zero</p>
-          <h2>Entrar é grátis. Sair é um clique.</h2>
-          <p>Sem cartão de crédito. A gente só te avisa quando o beta do Banco do Brasil abrir. Se mudar de ideia, o descadastro fica no rodapé de qualquer e-mail. Sem letra miúda.</p>
-        </div>
-
-        <div class="objecoes">
-          <div class="obj fade-up">
-            <h3>"É só mais um ChatGPT com outra roupa?"</h3>
-            <p>O ChatGPT não conhece a frequência de assuntos da sua banca, não monta seu plano e esquece o que você errou ontem. A Passou nasce pra fazer exatamente essas três coisas.</p>
+        <p class="eyebrow">VOCÊ CONHECE ESSA ROTINA</p>
+        <h2 class="h2" style="max-width:20ch;margin-bottom:44px">Esforço você já tem. O que falta é <span class="accent">um mapa.</span></h2>
+        <div class="versus">
+          <div class="v-card v-old">
+            <div class="v-head">O JEITO ANTIGO</div>
+            <div class="v-list">
+              <div class="v-item"><span class="v-x">✕</span><span>Acumular PDF e videoaula sem saber se está evoluindo</span></div>
+              <div class="v-item"><span class="v-x">✕</span><span>Montar cronograma no domingo e abandonar na quarta</span></div>
+              <div class="v-item"><span class="v-x">✕</span><span>Rever o simulado de duas semanas atrás e não lembrar de nada</span></div>
+              <div class="v-item"><span class="v-x">✕</span><span>Gastar 3 horas num assunto que quase não cai na prova</span></div>
+            </div>
           </div>
-          <div class="obj fade-up">
-            <h3>"Vou me cadastrar e abandonar, como as outras."</h3>
-            <p>A Passou tira as decisões do seu caminho. Cronograma, prioridade e revisão chegam prontos. Sobra a parte que só depende de você: sentar e estudar.</p>
-          </div>
-          <div class="obj fade-up">
-            <h3>"Vou receber spam?"</h3>
-            <p>Um e-mail quando o beta abrir e poucos avisos no caminho. Cansou? O descadastro resolve em um clique.</p>
-          </div>
-          <div class="obj fade-up">
-            <h3>"Não tenho tempo pra aprender ferramenta nova."</h3>
-            <p>O onboarding pede duas respostas: qual concurso e quanto tempo por dia. O resto a Passou monta.</p>
+          <div class="v-card v-new">
+            <div class="v-head">COM A PASSOU</div>
+            <div class="v-list">
+              <div class="v-item"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"></circle><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg><span>Você sabe onde erra, por quê, e o que fazer com isso</span></div>
+              <div class="v-item"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"></circle><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg><span>Plano diário pronto quando você abre o app</span></div>
+              <div class="v-item"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"></circle><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg><span>Cada assunto volta pra revisão pouco antes de você esquecer</span></div>
+              <div class="v-item"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#F4B740"></circle><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#0E3D2F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg><span>Foco no que a banca cobra de verdade, pela frequência real</span></div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ 8. FAQ ============ -->
-    <section class="alt" aria-label="Perguntas frequentes">
-      <div class="wrap-narrow">
-        <p class="kicker fade-up">Dúvidas</p>
-        <h2 class="fade-up">Perguntas frequentes</h2>
-
-        <div class="faq fade-up">
-          <details>
-            <summary>A Passou substitui meu cursinho?</summary>
-            <p>Ela trabalha em cima do que você já estuda: aponta prioridade, agenda revisão e mostra onde você está falhando. Funciona sozinha ou junto com o seu cursinho.</p>
-          </details>
-          <details>
-            <summary>Funciona pra qual concurso?</summary>
-            <p>O foco inicial é o Banco do Brasil. Entrando na lista, você garante prioridade no beta e fica sabendo quando novos concursos chegarem.</p>
-          </details>
-          <details>
-            <summary>Quando lança?</summary>
-            <p>Estamos em pré-lançamento e o beta abre em vagas limitadas. Quem está na lista é avisado primeiro.</p>
-          </details>
-          <details>
-            <summary>Preciso pagar agora?</summary>
-            <p>Entrar na lista é grátis e sem cartão.</p>
-          </details>
-          <details>
-            <summary>Já tentei outras plataformas e não passei. Por que essa seria diferente?</summary>
-            <p>Porque a maioria das plataformas só empilha mais conteúdo. Material você já tem de sobra. O que costuma faltar é diagnóstico e revisão na hora certa, e é aí que a Passou trabalha.</p>
-          </details>
-          <details>
-            <summary>O que é essa "revisão espaçada"?</summary>
-            <p>Um sistema que agenda cada assunto pra voltar pouco antes de você esquecer. É a técnica com mais evidência científica de retenção de longo prazo, e a Passou roda tudo no automático.</p>
-          </details>
+        <div class="early">
+          <div class="early-col"><div class="early-rule"></div><h3>Entra antes de todo mundo</h3><p>Você começa a estudar com a plataforma enquanto ela ainda está fechada pro público. Cada semana de vantagem conta.</p></div>
+          <div class="early-col"><div class="early-rule"></div><h3>Condição de fundador</h3><p>Quem participa do beta garante condição especial quando a plataforma abrir. Nosso jeito de valorizar quem confiou primeiro.</p></div>
+          <div class="early-col"><div class="early-rule"></div><h3>Molda o produto</h3><p>Seu feedback vai direto pro time que constrói a Passou. As primeiras turmas definem o rumo da plataforma.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 9. CTA FINAL ============ -->
-    <section class="final" aria-label="Entre na lista">
-      <div class="wrap">
-        <h2 class="fade-up">O edital não espera. Sua <mark>vaga no beta</mark> também não.</h2>
-        <p class="lead fade-up">Entre na lista de espera e garanta prioridade quando o beta do Banco do Brasil abrir.</p>
+    <!-- ============ FAQ ============ -->
+    <section class="pad" aria-label="Perguntas frequentes">
+      <div class="faq-wrap">
+        <p class="eyebrow">DÚVIDAS</p>
+        <h2 class="h2" style="font-size:40px;margin-bottom:36px">Perguntas frequentes</h2>
+        <div class="faq">
+          <details><summary>A Passou substitui meu cursinho?<span class="ic">+</span></summary><p>Ela trabalha em cima do que você já estuda: aponta prioridade, agenda revisão e mostra onde você está falhando. Funciona sozinha ou junto com o seu cursinho.</p></details>
+          <details><summary>Funciona pra qual concurso?<span class="ic">+</span></summary><p>O foco inicial é o Banco do Brasil. Entrando na lista, você garante prioridade no beta e fica sabendo quando novos concursos chegarem.</p></details>
+          <details><summary>Quando lança?<span class="ic">+</span></summary><p>Estamos em pré-lançamento e o beta abre em vagas limitadas. Quem está na lista é avisado primeiro.</p></details>
+          <details><summary>Preciso pagar agora?<span class="ic">+</span></summary><p>Entrar na lista é grátis e sem cartão.</p></details>
+          <details><summary>O que é essa "revisão espaçada"?<span class="ic">+</span></summary><p>Um sistema que agenda cada assunto pra voltar pouco antes de você esquecer. É a técnica com mais evidência científica de retenção de longo prazo, e a Passou roda tudo no automático.</p></details>
+        </div>
+      </div>
+    </section>
 
-        <div class="form-card fade-up">
-          <form class="waitlist-form" novalidate>
-            <label class="hp-field" aria-hidden="true">Não preencha este campo
-              <input type="text" name="website" tabindex="-1" autocomplete="off">
-            </label>
-            <label for="email-final" class="hp-field">Seu melhor e-mail</label>
-            <input type="email" id="email-final" name="email" placeholder="Seu melhor e-mail" required autocomplete="email" inputmode="email">
-            <button type="submit" class="btn">Quero entrar na lista de espera</button>
-          </form>
-          <div class="form-msg" role="status" aria-live="polite"></div>
-          <p class="microcopy">Grátis. Sem cartão. Saia quando quiser.</p>
+    <!-- ============ CTA FINAL ============ -->
+    <section class="cta" aria-label="Entre na lista">
+      <div class="cta-grid">
+        <div class="cta-img" style="background-image:url('img-aprovada.png')" role="img" aria-label="Aprovada vendo o resultado no celular"></div>
+        <div class="cta-text">
+          <h2 class="h2">O edital não espera. Sua <span class="accent">vaga no beta</span> também não.</h2>
+          <p class="sub">Entre na lista e garanta prioridade quando o beta do Banco do Brasil abrir.</p>
+          <div class="form-card" style="background:transparent;border:none;padding:0">
+            <form class="waitlist-form" novalidate>
+              <label class="hp" aria-hidden="true">Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+              <div class="field-row">
+                <input class="f f-nome" type="text" name="nome" placeholder="Seu nome" autocomplete="name" required>
+                <input class="f f-zap" type="tel" name="whatsapp" placeholder="WhatsApp" autocomplete="tel" inputmode="tel">
+              </div>
+              <input class="f f-mail" type="email" name="email" placeholder="Seu melhor e-mail" autocomplete="email" inputmode="email" required>
+              <button type="submit" class="btn">Quero minha vaga no beta →</button>
+            </form>
+            <div class="form-msg" role="status" aria-live="polite"></div>
+            <p class="microcopy">Grátis · sem cartão · saia quando quiser</p>
+          </div>
         </div>
       </div>
     </section>
@@ -909,23 +453,15 @@
     </div>
   </footer>
 
-  <!-- ============ JS mínimo ============ -->
+  <!-- ============ JS ============ -->
   <script>
   (function () {
     "use strict";
-
-    /* ================================================================
-       DESTINO DOS E-MAILS: webhook do n8n (fluxo salva no Google Sheets).
-       O JSON do fluxo está em n8n-workflow-lista-espera.json (repo).
-       Alternativa Supabase REST continua disponível: preencha os campos
-       SUPABASE_* e esvazie WEBHOOK_URL.
-    ================================================================ */
     var CONFIG = {
       WEBHOOK_URL: "https://webhook.vektoria.cloud/webhook/4eb5e8b9-c013-47ed-aca8-162bd681935d",
       SUPABASE_URL: "",
       SUPABASE_ANON_KEY: ""
     };
-
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     function enviar(payload) {
@@ -944,12 +480,14 @@
           "Authorization": "Bearer " + CONFIG.SUPABASE_ANON_KEY,
           "Prefer": "return=minimal"
         },
-        body: JSON.stringify({ email: payload.email, source: payload.source })
+        body: JSON.stringify({ email: payload.email, nome: payload.nome, whatsapp: payload.whatsapp, source: payload.source })
       });
     }
 
     document.querySelectorAll(".waitlist-form").forEach(function (form) {
-      var input = form.querySelector('input[type="email"]');
+      var inputMail = form.querySelector('input[name="email"]');
+      var inputNome = form.querySelector('input[name="nome"]');
+      var inputZap = form.querySelector('input[name="whatsapp"]');
       var botao = form.querySelector("button");
       var msg = form.parentElement.querySelector(".form-msg");
       var textoOriginal = botao.textContent;
@@ -957,30 +495,37 @@
       form.addEventListener("submit", function (ev) {
         ev.preventDefault();
 
-        /* honeypot: se um bot preencheu, finge sucesso e descarta */
         var hp = form.querySelector('input[name="website"]');
         if (hp && hp.value) { mostrar("ok", "Pronto! Você está na lista."); return; }
 
-        var email = (input.value || "").trim().toLowerCase();
+        var email = (inputMail.value || "").trim().toLowerCase();
+        var nome = (inputNome.value || "").trim();
+        var whatsapp = (inputZap.value || "").trim();
+
+        if (!nome) { inputNome.setAttribute("aria-invalid", "true"); mostrar("err", "Como podemos te chamar? Preencha seu nome."); inputNome.focus(); return; }
+        inputNome.removeAttribute("aria-invalid");
+
         if (!EMAIL_RE.test(email)) {
-          input.setAttribute("aria-invalid", "true");
+          inputMail.setAttribute("aria-invalid", "true");
           mostrar("err", "Confere o e-mail? Parece que faltou algo.");
-          input.focus();
+          inputMail.focus();
           return;
         }
-        input.removeAttribute("aria-invalid");
+        inputMail.removeAttribute("aria-invalid");
 
         botao.disabled = true;
         botao.textContent = "Enviando...";
 
         enviar({
+          nome: nome,
+          whatsapp: whatsapp,
           email: email,
           source: "landing-lista-espera",
           timestamp: new Date().toISOString()
         }).then(function (res) {
           if (res.ok || res.status === 409) {
             form.style.display = "none";
-            mostrar("ok", "Pronto! Você está na lista. Vamos te avisar quando o beta do Banco do Brasil abrir. ✓");
+            mostrar("ok", "Pronto, " + nome.split(" ")[0] + "! Você está na lista. Vamos te avisar quando o beta do Banco do Brasil abrir. ✓");
           } else {
             throw new Error("HTTP " + res.status);
           }
@@ -996,21 +541,6 @@
         msg.textContent = texto;
       }
     });
-
-    /* ============ Animações de entrada (respeita reduced-motion) ============ */
-    var reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var alvos = document.querySelectorAll(".fade-up");
-    if (reduz || !("IntersectionObserver" in window)) {
-      document.documentElement.classList.add("no-anim");
-      alvos.forEach(function (el) { el.classList.add("in"); });
-    } else {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-      alvos.forEach(function (el) { io.observe(el); });
-    }
   })();
   </script>
 </body>
